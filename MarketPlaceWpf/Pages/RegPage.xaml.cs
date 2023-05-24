@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using MarketPlaceWpf.Pages;
 using System.Windows.Shapes;
+using MarketPlaceWpf.Models;
 using System.Net;
 
 namespace MarketPlaceWpf.Pages
@@ -36,45 +37,37 @@ namespace MarketPlaceWpf.Pages
         {
              string login = LoginTb.Text.Trim();    
               string password = PasswordTb.Password.Trim();   
-             //string password2 = Password2Tb.Password.Trim();   
+             string password2 = PasswordTb2.Password.Trim();
+            if (login.Length > 0 && password.Length > 0 && password2.Length > 0)
+            {
+                if (password == password2)
+                {
+                    if (App.db.Useer.Local.Any(x => x.Login == login && x.Password == password && x.Password == password2))
+                    {
+                        MessageBox.Show("such user exists");
+                    }
+                    else 
+                    {
+                        App.db.Useer.Add(new Useer
+                        {
+                            Password = password,    
+                            Login = login,
+                            Name = NameTb.Text.Trim(),
+                            LastName = LastNameTb.Text.Trim(),  
+                            SurName = SurnameTb.Text.Trim(),
+                        });
+                        App.db.SaveChanges();
+                    MessageBox.Show("Welcome");
+                              NavigationService.Navigate(new AutoPage());
+                    }
+                }
+                else MessageBox.Show("Password mismatch");
+            }
+            else MessageBox.Show("fill in the fields");
+
 
 
         }
 
-        private void VidBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ShowPasswordCharsCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-           
-                Password2TB.Visibility = Visibility.Visible;
-                Password2Pb.Visibility = Visibility.Collapsed;
-
-                Password2TB.Text = new NetworkCredential(string.Empty, Password2Pb.SecurePassword).Password;
-                Password2TB.Focus();
-    
-            
-  
-        }
-
-        private void ShowPasswordCharsCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-         
-
-            Password2Pb.Visibility = Visibility.Visible;
-            Password2TB.Visibility = Visibility.Collapsed;
-
-            Password2TB.Text ="";
-            Password2TB.Focus();
-          
-          
-        }
-
-        private void Vid_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPasswordCharsCheckBox.IsChecked = true;
-        }
     }
 }

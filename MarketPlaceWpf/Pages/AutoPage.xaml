@@ -11,9 +11,38 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Login" Style="{StaticResource TitleTb}"/>
-            <TextBox x:Name="LoginTb" Margin="5"/> 
-            <TextBlock Text="Password" Style="{StaticResource TitleTb}"/>
-            <TextBox x:Name="PasswordTb" Margin="5"/>
+            <TextBox x:Name="LoginTb"
+                     HorizontalAlignment="Left" Width="150"
+                    Height="20" Margin="5"/>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Password"
+                           Style="{StaticResource TitleTb}"/>
+               
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="Password2TB"
+                  
+                             Width="150" Visibility="Collapsed"/>
+                    <PasswordBox x:Name="Password2Pb"  
+                                 Height="20" Margin="5"
+                                 Width="150" />
+                    <Button x:Name="Vid" 
+                       Click="Vid_Click">
+                        <Image Source="\Resoures\png-transparent-electric-blue-symbol-easyfind-blue-electric-blue-application.png"/>
+                    </Button>      
+                    <Button x:Name="Sce" 
+                      Click="Sce_Click">
+                        <Image Source="\Resoures\png-transparent-electric-blue-symbol-easyfind-blue-electric-blue-application.png"/>
+                    </Button>
+                    <CheckBox
+                        Visibility="Hidden"
+                      x:Name="ShowPasswordCharsCheckBox"
+                        Unchecked="ShowPasswordCharsCheckBox_Unchecked"
+                    Checked="ShowPasswordCharsCheckBox_Checked"/>
+     </StackPanel>
+                
+        </StackPanel>
+            
             <StackPanel Orientation="Horizontal">
                 <Button Content="Entrance" x:Name="EntranceBtn"
                         Click="EntranceBtn_Click"/>
@@ -21,6 +50,8 @@
                         Click="RegistrationBtn_Click"
                         />
             </StackPanel>
+            
         </StackPanel>
+        
     </Grid>
 </Page>

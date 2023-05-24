@@ -10,27 +10,26 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Name" Style="{StaticResource TitleTb}"/>
+            <TextBox x:Name="NameTb"/>
+
+            <TextBlock Text="Last name" Style="{StaticResource TitleTb}"/>
+            <TextBox x:Name="LastNameTb"/>
+
+                <!--отчество-->
+            <TextBlock Text="Surname" Style="{StaticResource TitleTb}"/>
+            <TextBox x:Name="SurnameTb"/>
+
+
             <TextBlock Text="Login" Style="{StaticResource TitleTb}"/>
             <TextBox x:Name="LoginTb"/>
+           
             <TextBlock Text="Password" Style="{StaticResource TitleTb}"/>
             <PasswordBox x:Name="PasswordTb"/>
+           
+            <TextBlock Text="Password2" Style="{StaticResource TitleTb}"/>
+            <PasswordBox x:Name="PasswordTb2"/>
 
-            <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Password" Style="{StaticResource TitleTb}"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="Password2TB"  Visibility="Collapsed"/>
-                    <PasswordBox x:Name="Password2Pb"  />
-                    <Button x:Name="Vid" 
-                          Click="Vid_Click">
-                        <Image Source="\Resoures\png-transparent-electric-blue-symbol-easyfind-blue-electric-blue-application.png"/>
-                    </Button>
-                    <CheckBox
-                        Visibility="Hidden"
-                      x:Name="ShowPasswordCharsCheckBox"
-                      Unchecked="ShowPasswordCharsCheckBox_Unchecked"
-                      Checked="ShowPasswordCharsCheckBox_Checked"/>
-                </StackPanel>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Button Content="Registration" 
                         Click="RegistrationBtn_Click"
@@ -39,6 +38,8 @@
                         Click="ExitBtn_Click"
                         x:Name="ExitBtn"/>
             </StackPanel>
+            
         </StackPanel>
+        
     </Grid>
 </Page>

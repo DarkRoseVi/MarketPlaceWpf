@@ -10,34 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+using MarketPlaceWpf.Models;
+using MarketPlaceWpf.Pages;
 using System.Windows.Shapes;
+using System.Windows.Navigation;
 
 namespace MarketPlaceWpf.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ProductPage.xaml
+    /// Логика взаимодействия для MainPAge.xaml
     /// </summary>
-    public partial class ProductPage : Page
+    public partial class MainPAge : Window
     {
-        public ProductPage()
+        public MainPAge()
         {
             InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void ProductBtn_Click(object sender, RoutedEventArgs e)
         {
-            ProdLw.ItemsSource = App.db.Product.ToList();
+            MyFrame.NavigationService.Navigate(new ProductPage());
         }
 
-        private void InformationBtn_Click(object sender, RoutedEventArgs e)
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
-        {
-
+            Close();    
         }
     }
 }
