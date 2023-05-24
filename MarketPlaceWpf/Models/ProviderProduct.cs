@@ -17,6 +17,7 @@ namespace MarketPlaceWpf.Models
         public int Id { get; set; }
         public Nullable<int> ProviderId { get; set; }
         public Nullable<int> ProductId { get; set; }
+        public Nullable<decimal> Cost { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Provider Provider { get; set; }

@@ -80,6 +80,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPAge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,65 +103,72 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Check.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeliveryType.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HelpClass.cs" />
-    <Compile Include="Models\MarketPlase.Context.cs">
+    <Compile Include="Models\MarketPlace.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MarketPlase.Context.tt</DependentUpon>
+      <DependentUpon>MarketPlace.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MarketPlase.cs">
+    <Compile Include="Models\MarketPlace.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MarketPlase.Designer.cs">
+    <Compile Include="Models\MarketPlace.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MarketPlase.edmx</DependentUpon>
+      <DependentUpon>MarketPlace.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Partial\Product.cs" />
     <Compile Include="Models\Product.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductOrder.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductPhoto.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Provider.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProviderProduct.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatysOrder.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TypePayment.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TypeProduct.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Useer.cs">
-      <DependentUpon>MarketPlase.tt</DependentUpon>
+      <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\AutoPage.xaml.cs">
       <DependentUpon>AutoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPAge.xaml.cs">
       <DependentUpon>MainPAge.xaml</DependentUpon>
@@ -181,12 +196,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\MarketPlase.edmx">
+    <EntityDeploy Include="Models\MarketPlace.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MarketPlase.Designer.cs</LastGenOutput>
+      <LastGenOutput>MarketPlace.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\MarketPlase.edmx.diagram">
-      <DependentUpon>MarketPlase.edmx</DependentUpon>
+    <None Include="Models\MarketPlace.edmx.diagram">
+      <DependentUpon>MarketPlace.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -200,21 +215,21 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\Partial\" />
+    <Resource Include="Resoures\png-transparent-electric-blue-symbol-easyfind-blue-electric-blue-application.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\MarketPlase.Context.tt">
+    <Content Include="Models\MarketPlace.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MarketPlase.edmx</DependentUpon>
-      <LastGenOutput>MarketPlase.Context.cs</LastGenOutput>
+      <DependentUpon>MarketPlace.edmx</DependentUpon>
+      <LastGenOutput>MarketPlace.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\MarketPlase.tt">
+    <Content Include="Models\MarketPlace.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MarketPlase.edmx</DependentUpon>
-      <LastGenOutput>MarketPlase.cs</LastGenOutput>
+      <DependentUpon>MarketPlace.edmx</DependentUpon>
+      <LastGenOutput>MarketPlace.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resoures\png-transparent-electric-blue-symbol-easyfind-blue-electric-blue-application.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

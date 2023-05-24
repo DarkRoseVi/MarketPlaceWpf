@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarketPlaceWpf.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,8 @@ namespace MarketPlaceWpf.Pages
 
         private void InformationBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var prod = (sender as Button).DataContext as Product;
+            NavigationService.Navigate(new InfoPage(prod));
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)

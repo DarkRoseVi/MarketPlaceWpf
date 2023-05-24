@@ -10,31 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using MarketPlaceWpf.Models;
-using MarketPlaceWpf.Pages;
-using System.Windows.Shapes;
 using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace MarketPlaceWpf.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainPAge.xaml
+    /// Логика взаимодействия для HomePage.xaml
     /// </summary>
-    public partial class MainPAge : Window
+    public partial class HomePage : Page
     {
-        public MainPAge()
+        public HomePage()
         {
             InitializeComponent();
         }
 
-        private void ProductBtn_Click(object sender, RoutedEventArgs e)
-        {
-          
-        }
-
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-      
+            
+        }
+
+        private void ProductBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new ProductPage());
         }
     }
 }

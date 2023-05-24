@@ -34,7 +34,7 @@
                         <Image Grid.Row="0" Width="150" Height="150" Source="{Binding MainPhoto}"/>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
                             <TextBlock Text="Name" Margin="5"/>
-                            <TextBlock Text="{Binding FuLlInfo}" 
+                            <TextBlock Text="{Binding FullInfo}" 
                                        TextWrapping="Wrap"
                                        Width="100" Margin="5"
                                        />

@@ -43,7 +43,7 @@ namespace MarketPlaceWpf.Pages
             if (user != null)
             {
                 //MessageBox.Show("Welcome " + HelpClass.AutoUset.Name);
-                NavigationService.Navigate(new MainPAge());
+                NavigationService.Navigate(new HomePage());
 
             }
             else 

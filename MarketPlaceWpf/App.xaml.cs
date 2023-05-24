@@ -14,6 +14,6 @@ namespace MarketPlaceWpf
     /// </summary>
     public partial class App : Application
     {
-       public static MArketPlaceAVEntities1 db = new MArketPlaceAVEntities1();
+       public static MArketPlaceAVEntities db = new MArketPlaceAVEntities();
     }
 }
