@@ -49,12 +49,35 @@
                     HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="User"/>
-                <TextBlock Name="User"/>
+                <TextBlock Name="UserTb"/>
             </StackPanel>
-        </StackPanel>
-        <Button x:Name="OrderAddBtn" Grid.Column="1"
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Type delivery"/>
+                <ComboBox x:Name="TypedeliveryCb"
+                          DisplayMemberPath="Title" SelectionChanged="Typedelivery_SelectionChanged"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" x:Name="AdressSt">
+                <TextBlock Text="Adress Delivery"/>
+                <TextBox x:Name="AdressDeliveryTb"/>
+            </StackPanel>
+
+            <StackPanel x:Name="DeliveryPointSt" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Delivery Point"/>
+                <ComboBox x:Name="DeliveryPointCb"
+                          DisplayMemberPath="Adress"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Check"/>
+                <ComboBox x:Name="CheckCb"
+                          DisplayMemberPath="Numger"/>
+            </StackPanel>
+
+            <Button x:Name="OrderAddBtn" Grid.Column="1"
                 Content="Creat order"
-                Grid.Row="1" Width="100" Height="20"
-/>
+                Grid.Row="1" Width="100" Height="20"/>
+        </StackPanel>
     </Grid>
 </Page>

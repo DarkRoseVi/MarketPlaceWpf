@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище MArketPlaceAVModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Check">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,6 +19,23 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Number" Type="int" />
           <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="ChekId">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numger" Type="nvarchar" MaxLength="13" />
+          <Property Name="CSV" Type="nvarchar" MaxLength="3" />
+          <Property Name="Age" Type="date" />
+          <Property Name="BankId" Type="int" />
+        </EntityType>
+        <EntityType Name="DeliveryPoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DeliveryType">
           <Key>
@@ -31,6 +55,9 @@
           <Property Name="TypePaymentId" Type="int" />
           <Property Name="DeliveryTypeId" Type="int" />
           <Property Name="AdressDelivery" Type="nvarchar(max)" />
+          <Property Name="DeliveryPoint" Type="int" />
+          <Property Name="CheckId" Type="int" />
+          <Property Name="DeliveryPointId" Type="int" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -130,6 +157,42 @@
             </Principal>
             <Dependent Role="Check">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChekId_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="ChekId" Type="Self.ChekId" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChekId">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ChekId">
+          <End Role="ChekId" Type="Self.ChekId" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChekId">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CheckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_DeliveryPoint">
+          <End Role="DeliveryPoint" Type="Self.DeliveryPoint" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryPoint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DeliveryPointId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -254,7 +317,10 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище MArketPlaceAVModelContainer">
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Check" EntityType="Self.Check" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChekId" EntityType="Self.ChekId" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryPoint" EntityType="Self.DeliveryPoint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeliveryType" EntityType="Self.DeliveryType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
@@ -270,6 +336,18 @@
           <AssociationSet Name="FK_Check_Useer" Association="Self.FK_Check_Useer">
             <End Role="Useer" EntitySet="Useer" />
             <End Role="Check" EntitySet="Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChekId_Bank" Association="Self.FK_ChekId_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="ChekId" EntitySet="ChekId" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ChekId" Association="Self.FK_Order_ChekId">
+            <End Role="ChekId" EntitySet="ChekId" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_DeliveryPoint" Association="Self.FK_Order_DeliveryPoint">
+            <End Role="DeliveryPoint" EntitySet="DeliveryPoint" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_DeliveryType" Association="Self.FK_Order_DeliveryType">
             <End Role="DeliveryType" EntitySet="DeliveryType" />
@@ -317,7 +395,10 @@
     <edmx:ConceptualModels>
       <Schema Namespace="MArketPlaceAVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MArketPlaceAVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bank" EntityType="MArketPlaceAVModel.Bank" />
           <EntitySet Name="Check" EntityType="MArketPlaceAVModel.Check" />
+          <EntitySet Name="ChekId" EntityType="MArketPlaceAVModel.ChekId" />
+          <EntitySet Name="DeliveryPoint" EntityType="MArketPlaceAVModel.DeliveryPoint" />
           <EntitySet Name="DeliveryType" EntityType="MArketPlaceAVModel.DeliveryType" />
           <EntitySet Name="Order" EntityType="MArketPlaceAVModel.Order" />
           <EntitySet Name="Product" EntityType="MArketPlaceAVModel.Product" />
@@ -330,9 +411,21 @@
           <EntitySet Name="TypePayment" EntityType="MArketPlaceAVModel.TypePayment" />
           <EntitySet Name="TypeProduct" EntityType="MArketPlaceAVModel.TypeProduct" />
           <EntitySet Name="Useer" EntityType="MArketPlaceAVModel.Useer" />
+          <AssociationSet Name="FK_ChekId_Bank" Association="MArketPlaceAVModel.FK_ChekId_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="ChekId" EntitySet="ChekId" />
+          </AssociationSet>
           <AssociationSet Name="FK_Check_Useer" Association="MArketPlaceAVModel.FK_Check_Useer">
             <End Role="Useer" EntitySet="Useer" />
             <End Role="Check" EntitySet="Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ChekId" Association="MArketPlaceAVModel.FK_Order_ChekId">
+            <End Role="ChekId" EntitySet="ChekId" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_DeliveryPoint" Association="MArketPlaceAVModel.FK_Order_DeliveryPoint">
+            <End Role="DeliveryPoint" EntitySet="DeliveryPoint" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_DeliveryType" Association="MArketPlaceAVModel.FK_Order_DeliveryType">
             <End Role="DeliveryType" EntitySet="DeliveryType" />
@@ -375,6 +468,14 @@
             <End Role="Useer" EntitySet="Useer" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChekId" Relationship="MArketPlaceAVModel.FK_ChekId_Bank" FromRole="Bank" ToRole="ChekId" />
+        </EntityType>
         <EntityType Name="Check">
           <Key>
             <PropertyRef Name="Id" />
@@ -383,6 +484,26 @@
           <Property Name="Number" Type="Int32" />
           <Property Name="UserId" Type="Int32" />
           <NavigationProperty Name="Useer" Relationship="MArketPlaceAVModel.FK_Check_Useer" FromRole="Check" ToRole="Useer" />
+        </EntityType>
+        <EntityType Name="ChekId">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numger" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="CSV" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="DateTime" Precision="0" />
+          <Property Name="BankId" Type="Int32" />
+          <NavigationProperty Name="Bank" Relationship="MArketPlaceAVModel.FK_ChekId_Bank" FromRole="ChekId" ToRole="Bank" />
+          <NavigationProperty Name="Order" Relationship="MArketPlaceAVModel.FK_Order_ChekId" FromRole="ChekId" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="DeliveryPoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="MArketPlaceAVModel.FK_Order_DeliveryPoint" FromRole="DeliveryPoint" ToRole="Order" />
         </EntityType>
         <EntityType Name="DeliveryType">
           <Key>
@@ -403,6 +524,11 @@
           <Property Name="TypePaymentId" Type="Int32" />
           <Property Name="DeliveryTypeId" Type="Int32" />
           <Property Name="AdressDelivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryPoint" Type="Int32" />
+          <Property Name="CheckId" Type="Int32" />
+          <Property Name="DeliveryPointId" Type="Int32" />
+          <NavigationProperty Name="ChekId" Relationship="MArketPlaceAVModel.FK_Order_ChekId" FromRole="Order" ToRole="ChekId" />
+          <NavigationProperty Name="DeliveryPoint1" Relationship="MArketPlaceAVModel.FK_Order_DeliveryPoint" FromRole="Order" ToRole="DeliveryPoint" />
           <NavigationProperty Name="DeliveryType" Relationship="MArketPlaceAVModel.FK_Order_DeliveryType" FromRole="Order" ToRole="DeliveryType" />
           <NavigationProperty Name="TypePayment" Relationship="MArketPlaceAVModel.FK_Order_TypePayment" FromRole="Order" ToRole="TypePayment" />
           <NavigationProperty Name="Useer" Relationship="MArketPlaceAVModel.FK_Order_Useer" FromRole="Order" ToRole="Useer" />
@@ -513,6 +639,18 @@
           <NavigationProperty Name="Order" Relationship="MArketPlaceAVModel.FK_Order_Useer" FromRole="Useer" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="MArketPlaceAVModel.FK_Useer_Role" FromRole="Useer" ToRole="Role" />
         </EntityType>
+        <Association Name="FK_ChekId_Bank">
+          <End Type="MArketPlaceAVModel.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="MArketPlaceAVModel.ChekId" Role="ChekId" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChekId">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Check_Useer">
           <End Type="MArketPlaceAVModel.Useer" Role="Useer" Multiplicity="0..1" />
           <End Type="MArketPlaceAVModel.Check" Role="Check" Multiplicity="*" />
@@ -522,6 +660,30 @@
             </Principal>
             <Dependent Role="Check">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ChekId">
+          <End Type="MArketPlaceAVModel.ChekId" Role="ChekId" Multiplicity="0..1" />
+          <End Type="MArketPlaceAVModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChekId">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CheckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_DeliveryPoint">
+          <End Type="MArketPlaceAVModel.DeliveryPoint" Role="DeliveryPoint" Multiplicity="0..1" />
+          <End Type="MArketPlaceAVModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryPoint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DeliveryPointId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -651,11 +813,38 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище MArketPlaceAVModelContainer" CdmEntityContainer="MArketPlaceAVEntities">
+          <EntitySetMapping Name="Bank">
+            <EntityTypeMapping TypeName="MArketPlaceAVModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Check">
             <EntityTypeMapping TypeName="MArketPlaceAVModel.Check">
               <MappingFragment StoreEntitySet="Check">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChekId">
+            <EntityTypeMapping TypeName="MArketPlaceAVModel.ChekId">
+              <MappingFragment StoreEntitySet="ChekId">
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="CSV" ColumnName="CSV" />
+                <ScalarProperty Name="Numger" ColumnName="Numger" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryPoint">
+            <EntityTypeMapping TypeName="MArketPlaceAVModel.DeliveryPoint">
+              <MappingFragment StoreEntitySet="DeliveryPoint">
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -671,6 +860,9 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="MArketPlaceAVModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="DeliveryPointId" ColumnName="DeliveryPointId" />
+                <ScalarProperty Name="CheckId" ColumnName="CheckId" />
+                <ScalarProperty Name="DeliveryPoint" ColumnName="DeliveryPoint" />
                 <ScalarProperty Name="AdressDelivery" ColumnName="AdressDelivery" />
                 <ScalarProperty Name="DeliveryTypeId" ColumnName="DeliveryTypeId" />
                 <ScalarProperty Name="TypePaymentId" ColumnName="TypePaymentId" />

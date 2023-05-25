@@ -25,7 +25,10 @@ namespace MarketPlaceWpf.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Bank> Bank { get; set; }
         public virtual DbSet<Check> Check { get; set; }
+        public virtual DbSet<ChekId> ChekId { get; set; }
+        public virtual DbSet<DeliveryPoint> DeliveryPoint { get; set; }
         public virtual DbSet<DeliveryType> DeliveryType { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }

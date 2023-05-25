@@ -24,7 +24,29 @@ namespace MarketPlaceWpf.Pages
         public BasketPage()
         {
             InitializeComponent();
+            TypedeliveryCb.ItemsSource = App.db.DeliveryType.ToList();
+            DeliveryPointCb.ItemsSource = App.db.DeliveryPoint.ToList();
+            
+            CheckCb.ItemsSource = App.db.Check.ToList();
+
             ProductLw.ItemsSource = HelpClass.prod;
+            var us = HelpClass.AutoUset.Name;
+            UserTb.Text = Convert.ToString(us );
+        }
+
+        private void Typedelivery_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int v = (TypedeliveryCb.SelectedItem as DeliveryType).Id;
+            if (v == 1)
+            {
+                AdressSt.Visibility = Visibility.Collapsed;
+                DeliveryPointSt.Visibility = Visibility.Visible;
+            }
+            else if (v == 2 ) 
+            {
+                AdressSt.Visibility = Visibility.Visible;
+                DeliveryPointSt.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

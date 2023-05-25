@@ -12,31 +12,22 @@ namespace MarketPlaceWpf.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class ChekId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public ChekId()
         {
-            this.ProductOrder = new HashSet<ProductOrder>();
+            this.Order = new HashSet<Order>();
         }
     
         public int Id { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<System.DateTime> DateEnd { get; set; }
-        public Nullable<int> TypePaymentId { get; set; }
-        public Nullable<int> DeliveryTypeId { get; set; }
-        public string AdressDelivery { get; set; }
-        public Nullable<int> DeliveryPoint { get; set; }
-        public Nullable<int> CheckId { get; set; }
-        public Nullable<int> DeliveryPointId { get; set; }
+        public string Numger { get; set; }
+        public string CSV { get; set; }
+        public Nullable<System.DateTime> Age { get; set; }
+        public Nullable<int> BankId { get; set; }
     
-        public virtual ChekId ChekId { get; set; }
-        public virtual DeliveryPoint DeliveryPoint1 { get; set; }
-        public virtual DeliveryType DeliveryType { get; set; }
-        public virtual TypePayment TypePayment { get; set; }
-        public virtual Useer Useer { get; set; }
+        public virtual Bank Bank { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductOrder> ProductOrder { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

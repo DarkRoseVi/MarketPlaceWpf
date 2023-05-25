@@ -118,7 +118,16 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Bank.cs">
+      <DependentUpon>MarketPlace.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Check.cs">
+      <DependentUpon>MarketPlace.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChekId.cs">
+      <DependentUpon>MarketPlace.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeliveryPoint.cs">
       <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeliveryType.cs">
