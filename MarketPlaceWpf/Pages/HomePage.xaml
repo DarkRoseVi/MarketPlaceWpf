@@ -10,21 +10,40 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="51*"/>
+            <RowDefinition Height="80*"/>
             <RowDefinition Height="383*"/>
         </Grid.RowDefinitions>
+        <Rectangle Fill="#FF1854C7" Opacity="0.6"/>
+        <Image Source="\Resoures\логотип.png"
+               Width="90"
+               Margin="5 0 0 0 "
+               Height="100"
+               HorizontalAlignment="Left"/>
         <Button x:Name="ExitBtn"
-                      VerticalAlignment="Bottom" HorizontalAlignment="Right"
-                        Content="Exit" 
+                      VerticalAlignment="Top" HorizontalAlignment="Right"
+                        Content="Exit" Margin="15"
                         Click="ExitBtn_Click" Width="100"/>
         <DockPanel Grid.Row="2">
-            <StackPanel DockPanel.Dock="Left">
-                <Button Width="100" Content="Product"
+
+            <StackPanel DockPanel.Dock="Left" Background="#FF1854C7"
+                       >
+          
+                <Button Width="90" Content="Product" VerticalAlignment="Top"
                         x:Name="ProductBtn" Click="ProductBtn_Click"/>
 
-            </StackPanel>
+                <Button Width="90" Content="Provider" 
+                        x:Name="ProviderBtn" Click="ProviderBtn_Click"/>
+                
+                <Button Width="90" Content="Type Product"
+                        x:Name="TypepProdBtn"
+                        Click="TypepProdBtn_Click"/>
 
-            <Frame DockPanel.Dock="Top" x:Name="MyFrame"/>
+                <Button Width="90" Content="Basket"
+                        x:Name="BasketBtn"
+                        Click="BasketBtn_Click"/>
+
+            </StackPanel>
+            <Frame DockPanel.Dock="Top" x:Name="MyFrame"></Frame>
 
         </DockPanel>
     </Grid>

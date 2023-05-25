@@ -19,7 +19,6 @@ namespace MarketPlaceWpf.Models
         {
             this.ProductOrder = new HashSet<ProductOrder>();
             this.ProductPhoto = new HashSet<ProductPhoto>();
-            this.ProviderProduct = new HashSet<ProviderProduct>();
         }
     
         public int Id { get; set; }
@@ -29,13 +28,13 @@ namespace MarketPlaceWpf.Models
         public Nullable<int> TypeProductId { get; set; }
         public Nullable<int> ProviderId { get; set; }
         public byte[] Image { get; set; }
+        public Nullable<decimal> Cost { get; set; }
     
+        public virtual Provider Provider { get; set; }
         public virtual TypeProduct TypeProduct { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductOrder> ProductOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductPhoto> ProductPhoto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProviderProduct> ProviderProduct { get; set; }
     }
 }

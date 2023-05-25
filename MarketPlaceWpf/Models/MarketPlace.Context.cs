@@ -32,7 +32,6 @@ namespace MarketPlaceWpf.Models
         public virtual DbSet<ProductOrder> ProductOrder { get; set; }
         public virtual DbSet<ProductPhoto> ProductPhoto { get; set; }
         public virtual DbSet<Provider> Provider { get; set; }
-        public virtual DbSet<ProviderProduct> ProviderProduct { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<StatysOrder> StatysOrder { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

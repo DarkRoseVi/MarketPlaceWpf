@@ -17,7 +17,7 @@ namespace MarketPlaceWpf.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Provider()
         {
-            this.ProviderProduct = new HashSet<ProviderProduct>();
+            this.Product = new HashSet<Product>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace MarketPlaceWpf.Models
         public string Adress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProviderProduct> ProviderProduct { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

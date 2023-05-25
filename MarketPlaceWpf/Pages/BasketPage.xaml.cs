@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarketPlaceWpf.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,31 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using MarketPlaceWpf.Models;
-using MarketPlaceWpf.Pages;
-using System.Windows.Shapes;
 using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace MarketPlaceWpf.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainPAge.xaml
+    /// Логика взаимодействия для BasketPage.xaml
     /// </summary>
-    public partial class MainPAge : Window
+    public partial class BasketPage : Page
     {
-        public MainPAge()
+        public BasketPage()
         {
             InitializeComponent();
-        }
-
-        private void ProductBtn_Click(object sender, RoutedEventArgs e)
-        {
-          
-        }
-
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
-        {
-      
+            ProductLw.ItemsSource = HelpClass.prod;
         }
     }
 }

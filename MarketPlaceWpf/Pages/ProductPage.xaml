@@ -14,10 +14,32 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="13*"/>
         </Grid.RowDefinitions>
+        <Rectangle Fill="#FF9067BB"/>
+        <StackPanel Orientation="Horizontal">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Сортировка" VerticalAlignment="Center"/>
+                <ComboBox x:Name="SortCb"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Поиск" VerticalAlignment="Center"/>
+                <TextBox x:Name="PoisTb"/>
+            </StackPanel>
+
+            <Button Content="Add" Name="AddBtn"
+                    Click="AddBtn_Click_1" Margin="340 20 0 0 "
+                     HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    />
+
+     
+
+        </StackPanel>
         <ListView Grid.Row="1" 
                   x:Name="ProdLw"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  d:ItemsSource="{d:SampleData ItemCount=5}">
+                  d:ItemsSource="{d:SampleData ItemCount=5}" >
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
@@ -25,13 +47,15 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
+                    <Border>
+                        
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Width="150" Height="150" Source="{Binding MainPhoto}"/>
+                            <Image Grid.Row="0" Width="150" Height="150" Source="{Binding MainPhoto}"/>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
                             <TextBlock Text="Name" Margin="5"/>
                             <TextBlock Text="{Binding FullInfo}" 
@@ -49,6 +73,7 @@
                                     Margin="5"/>
                         </StackPanel>
                     </Grid>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
 

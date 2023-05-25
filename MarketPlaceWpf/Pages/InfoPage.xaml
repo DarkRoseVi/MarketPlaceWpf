@@ -5,66 +5,98 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MarketPlaceWpf.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="383" d:DesignWidth="700"
       Title="InfoPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+           
             <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Title" Margin="5"/>
-             <TextBox Text="{Binding Title}"
-                      Width="auto"
-                      x:Name="TitleTb" Margin="5"/>
-            </StackPanel>
-            
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Description"/>
-                <TextBox Text="{Binding Descriprion}"
-                         Width="auto"/>
+                
+            <StackPanel Orientation="Vertical">
+                
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <TextBlock Text="Title" Margin="5"/>
+                <TextBox Text="{Binding Title}"
+                     
+                      x:Name="TitleTb" Margin="5" />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Description"/>
+                <TextBox Text="{Binding Descriprion}"
+                      
+                   Height="50" TextWrapping="Wrap"
+                         />
+            </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" >
+                
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="TypeProduct"
                           />
                 <ComboBox x:Name="TypeCb"
-                          Width="100" Margin="5"
+                         
                           DisplayMemberPath="Title"
                           SelectedItem="{Binding TypeProduct }"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Provider"/>
-                <ComboBox x:Name="ProviderTb"
-                          SelectedItem="{Binding ProviderProduct.Provider}"
-                         Width="100" Margin="5"></ComboBox>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="Provider"/>
+                    <ComboBox x:Name="ProviderTb"
+                              DisplayMemberPath="Title"
+                          SelectedItem="{Binding Provider}"
+                       ></ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Text="Cost"/>
+                        <TextBox x:Name="CostTb" Text="{Binding Cost}" PreviewTextInput="CostTb_PreviewTextInput"/>
+                    </StackPanel>
+                
             </StackPanel>
-
+                
+            </StackPanel>
             <Button Content="Save" Name="SaveBtn"
-                    Click="SaveBtn_Click" Width="100" Margin="5"/>
-
+                    Click="SaveBtn_Click" Width="100" Margin="5"
+                    />
         </StackPanel>
 
-        <DockPanel Grid.Column="1">
-            
-        <Button Name="AddImage"
+        <DockPanel Grid.Row="1" Margin="10" HorizontalAlignment="Center">
+
+            <Button Name="AddImage"
                 Content="Add" Click="AddImage_Click"
                 DockPanel.Dock="Bottom"/>
-        <ListView x:Name="ImageLW"
+            <ListView x:Name="ImageLW" 
                   d:ItemsSource="{d:SampleData ItemCount=5}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-
-                    <Image Width="200" Margin="5"
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <Border>
+                            
+                            <StackPanel Orientation="Horizontal">
+                 
+                                <Image Width="100" Margin="5"
+                                       Height="100"
                                Source="{Binding Photo}"
                                RenderOptions.BitmapScalingMode="Fant"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    
+                            </StackPanel>
+                        </Border>
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </DockPanel>
 
     </Grid>

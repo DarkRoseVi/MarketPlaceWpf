@@ -27,12 +27,27 @@ namespace MarketPlaceWpf.Pages
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            NavigationService.Navigate(new AutoPage());
         }
 
         private void ProductBtn_Click(object sender, RoutedEventArgs e)
         {
             MyFrame.NavigationService.Navigate(new ProductPage());
+        }
+
+        private void ProviderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new ProviderPage()); 
+        }
+
+        private void TypepProdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new TypeProductPage());  
+        }
+
+        private void BasketBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new BasketPage());   
         }
     }
 }

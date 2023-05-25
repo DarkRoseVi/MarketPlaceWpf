@@ -39,6 +39,12 @@ namespace MarketPlaceWpf.Pages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+            var product = (sender as Button).DataContext as Product;
+            HelpClass.prod.Add(product);
+        }
+
+        private void AddBtn_Click_1(object sender, RoutedEventArgs e)
+        {
 
         }
     }

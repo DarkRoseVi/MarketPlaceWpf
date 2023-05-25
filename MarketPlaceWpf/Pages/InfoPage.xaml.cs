@@ -28,14 +28,14 @@ namespace MarketPlaceWpf.Pages
         public InfoPage(Product product)
         {
             InitializeComponent();
-            TypeCb.ItemsSource = App.db.TypeProduct.ToList();  
+            TypeCb.ItemsSource = App.db.TypeProduct.ToList();
+            ProviderTb.ItemsSource = App.db.Provider.ToList();  
             contextproduct = product;
             DataContext = contextproduct;
             ImageLW.ItemsSource = contextproduct.ProductPhoto.ToList();
 
             int id = Convert.ToInt32(contextproduct.Id);
-            ProviderTb.ItemsSource = contextproduct.ProviderProduct.Where(x => x.Product.Id == id ).Select(z =>z.Provider).ToList();
-            ProviderTb.DisplayMemberPath = "Title";
+        
            
 
             ImageLW.ItemsSource = contextproduct.ProductPhoto.ToList();
@@ -71,7 +71,22 @@ namespace MarketPlaceWpf.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (contextproduct.Id == 0 )
+            {
+                App.db.Product.Add(contextproduct);
+            }
+            MessageBox.Show("yes");
+            App.db.SaveChanges();
+            NavigationService.Navigate(new ProductPage());
+        }
 
+        private void CostTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+
+            if (!Char.IsDigit(e.Text, 0) && (e.Text != ","))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

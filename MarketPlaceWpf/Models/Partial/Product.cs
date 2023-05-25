@@ -15,6 +15,16 @@ namespace MarketPlaceWpf.Models
                 return Title;
             }
         }
-            
+
+        public byte[] MainPhoto
+        {
+            get
+            {
+                var firstphoro = this.ProductPhoto.FirstOrDefault();
+                if (firstphoro != null)
+                    return firstphoro.Photo;
+                return null;
+            }
+        }
     }
 }

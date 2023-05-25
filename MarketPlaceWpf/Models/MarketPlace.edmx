@@ -43,6 +43,7 @@
           <Property Name="TypeProductId" Type="int" />
           <Property Name="ProviderId" Type="int" />
           <Property Name="Image" Type="image" />
+          <Property Name="Cost" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="ProductOrder">
           <Key>
@@ -69,15 +70,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
           <Property Name="Adress" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="ProviderProduct">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProviderId" Type="int" />
-          <Property Name="ProductId" Type="int" />
-          <Property Name="Cost" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -177,6 +169,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Provider">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_TypeProduct">
           <End Role="TypeProduct" Type="Self.TypeProduct" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -237,30 +241,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProviderProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="ProviderProduct" Type="Self.ProviderProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProviderProduct">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProviderProduct_Provider">
-          <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
-          <End Role="ProviderProduct" Type="Self.ProviderProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Provider">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProviderProduct">
-              <PropertyRef Name="ProviderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Useer_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Useer" Type="Self.Useer" Multiplicity="*" />
@@ -281,7 +261,6 @@
           <EntitySet Name="ProductOrder" EntityType="Self.ProductOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductPhoto" EntityType="Self.ProductPhoto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProviderProduct" EntityType="Self.ProviderProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatysOrder" EntityType="Self.StatysOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -304,6 +283,10 @@
             <End Role="Useer" EntitySet="Useer" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Provider" Association="Self.FK_Product_Provider">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
           <AssociationSet Name="FK_Product_TypeProduct" Association="Self.FK_Product_TypeProduct">
             <End Role="TypeProduct" EntitySet="TypeProduct" />
             <End Role="Product" EntitySet="Product" />
@@ -324,14 +307,6 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductPhoto" EntitySet="ProductPhoto" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProviderProduct_Product" Association="Self.FK_ProviderProduct_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProviderProduct" EntitySet="ProviderProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProviderProduct_Provider" Association="Self.FK_ProviderProduct_Provider">
-            <End Role="Provider" EntitySet="Provider" />
-            <End Role="ProviderProduct" EntitySet="ProviderProduct" />
-          </AssociationSet>
           <AssociationSet Name="FK_Useer_Role" Association="Self.FK_Useer_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Useer" EntitySet="Useer" />
@@ -349,7 +324,6 @@
           <EntitySet Name="ProductOrder" EntityType="MArketPlaceAVModel.ProductOrder" />
           <EntitySet Name="ProductPhoto" EntityType="MArketPlaceAVModel.ProductPhoto" />
           <EntitySet Name="Provider" EntityType="MArketPlaceAVModel.Provider" />
-          <EntitySet Name="ProviderProduct" EntityType="MArketPlaceAVModel.ProviderProduct" />
           <EntitySet Name="Role" EntityType="MArketPlaceAVModel.Role" />
           <EntitySet Name="StatysOrder" EntityType="MArketPlaceAVModel.StatysOrder" />
           <EntitySet Name="sysdiagrams" EntityType="MArketPlaceAVModel.sysdiagrams" />
@@ -376,6 +350,10 @@
             <End Role="Order" EntitySet="Order" />
             <End Role="ProductOrder" EntitySet="ProductOrder" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Provider" Association="MArketPlaceAVModel.FK_Product_Provider">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
           <AssociationSet Name="FK_Product_TypeProduct" Association="MArketPlaceAVModel.FK_Product_TypeProduct">
             <End Role="TypeProduct" EntitySet="TypeProduct" />
             <End Role="Product" EntitySet="Product" />
@@ -388,17 +366,9 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductPhoto" EntitySet="ProductPhoto" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProviderProduct_Product" Association="MArketPlaceAVModel.FK_ProviderProduct_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProviderProduct" EntitySet="ProviderProduct" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProductOrder_StatysOrder" Association="MArketPlaceAVModel.FK_ProductOrder_StatysOrder">
             <End Role="StatysOrder" EntitySet="StatysOrder" />
             <End Role="ProductOrder" EntitySet="ProductOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProviderProduct_Provider" Association="MArketPlaceAVModel.FK_ProviderProduct_Provider">
-            <End Role="Provider" EntitySet="Provider" />
-            <End Role="ProviderProduct" EntitySet="ProviderProduct" />
           </AssociationSet>
           <AssociationSet Name="FK_Useer_Role" Association="MArketPlaceAVModel.FK_Useer_Role">
             <End Role="Role" EntitySet="Role" />
@@ -449,10 +419,11 @@
           <Property Name="TypeProductId" Type="Int32" />
           <Property Name="ProviderId" Type="Int32" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Cost" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="Provider" Relationship="MArketPlaceAVModel.FK_Product_Provider" FromRole="Product" ToRole="Provider" />
           <NavigationProperty Name="TypeProduct" Relationship="MArketPlaceAVModel.FK_Product_TypeProduct" FromRole="Product" ToRole="TypeProduct" />
           <NavigationProperty Name="ProductOrder" Relationship="MArketPlaceAVModel.FK_ProductOrder_Product" FromRole="Product" ToRole="ProductOrder" />
           <NavigationProperty Name="ProductPhoto" Relationship="MArketPlaceAVModel.FK_ProductPhoto_Product" FromRole="Product" ToRole="ProductPhoto" />
-          <NavigationProperty Name="ProviderProduct" Relationship="MArketPlaceAVModel.FK_ProviderProduct_Product" FromRole="Product" ToRole="ProviderProduct" />
         </EntityType>
         <EntityType Name="ProductOrder">
           <Key>
@@ -483,18 +454,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ProviderProduct" Relationship="MArketPlaceAVModel.FK_ProviderProduct_Provider" FromRole="Provider" ToRole="ProviderProduct" />
-        </EntityType>
-        <EntityType Name="ProviderProduct">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProviderId" Type="Int32" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="Cost" Type="Decimal" Precision="5" Scale="2" />
-          <NavigationProperty Name="Product" Relationship="MArketPlaceAVModel.FK_ProviderProduct_Product" FromRole="ProviderProduct" ToRole="Product" />
-          <NavigationProperty Name="Provider" Relationship="MArketPlaceAVModel.FK_ProviderProduct_Provider" FromRole="ProviderProduct" ToRole="Provider" />
+          <NavigationProperty Name="Product" Relationship="MArketPlaceAVModel.FK_Product_Provider" FromRole="Provider" ToRole="Product" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -613,6 +573,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Provider">
+          <End Type="MArketPlaceAVModel.Provider" Role="Provider" Multiplicity="0..1" />
+          <End Type="MArketPlaceAVModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_TypeProduct">
           <End Type="MArketPlaceAVModel.TypeProduct" Role="TypeProduct" Multiplicity="0..1" />
           <End Type="MArketPlaceAVModel.Product" Role="Product" Multiplicity="*" />
@@ -649,18 +621,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProviderProduct_Product">
-          <End Type="MArketPlaceAVModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="MArketPlaceAVModel.ProviderProduct" Role="ProviderProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProviderProduct">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProductOrder_StatysOrder">
           <End Type="MArketPlaceAVModel.StatysOrder" Role="StatysOrder" Multiplicity="0..1" />
           <End Type="MArketPlaceAVModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
@@ -670,18 +630,6 @@
             </Principal>
             <Dependent Role="ProductOrder">
               <PropertyRef Name="StatysOrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProviderProduct_Provider">
-          <End Type="MArketPlaceAVModel.Provider" Role="Provider" Multiplicity="0..1" />
-          <End Type="MArketPlaceAVModel.ProviderProduct" Role="ProviderProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Provider">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProviderProduct">
-              <PropertyRef Name="ProviderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -736,6 +684,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="MArketPlaceAVModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
                 <ScalarProperty Name="TypeProductId" ColumnName="TypeProductId" />
@@ -771,16 +720,6 @@
               <MappingFragment StoreEntitySet="Provider">
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProviderProduct">
-            <EntityTypeMapping TypeName="MArketPlaceAVModel.ProviderProduct">
-              <MappingFragment StoreEntitySet="ProviderProduct">
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

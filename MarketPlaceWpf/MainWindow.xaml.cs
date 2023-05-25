@@ -24,7 +24,8 @@ namespace MarketPlaceWpf
         public MainWindow()
         {
             InitializeComponent();
-            MyFrame.NavigationService.Navigate(new AutoPage());
+           // MyFrame.NavigationService.Navigate(new AutoPage())
+           MyFrame.NavigationService.Navigate(new HomePage());  
         }
     }
 }
