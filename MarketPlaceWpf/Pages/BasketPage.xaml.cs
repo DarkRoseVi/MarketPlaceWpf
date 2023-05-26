@@ -26,12 +26,16 @@ namespace MarketPlaceWpf.Pages
             InitializeComponent();
             TypedeliveryCb.ItemsSource = App.db.DeliveryType.ToList();
             DeliveryPointCb.ItemsSource = App.db.DeliveryPoint.ToList();
-            
-            CheckCb.ItemsSource = App.db.Check.ToList();
+            CheckCb.ItemsSource = App.db.Chek.Where(x => x.UserId == HelpClass.AutoUset.Id).ToList();
+            TypePaymentCb.ItemsSource = App.db.TypePayment.ToList();
+
+
+
+            CheckCb.ItemsSource = App.db.Chek.ToList();
 
             ProductLw.ItemsSource = HelpClass.prod;
-            var us = HelpClass.AutoUset.Name;
-            UserTb.Text = Convert.ToString(us );
+          
+            UserTb.Text = HelpClass.AutoUset.LastName + " " + HelpClass.AutoUset.Name + " " + HelpClass.AutoUset.SurName;
         }
 
         private void Typedelivery_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -47,6 +51,80 @@ namespace MarketPlaceWpf.Pages
                 AdressSt.Visibility = Visibility.Visible;
                 DeliveryPointSt.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void CheckCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var chek = CheckCb.SelectedItem as Chek;
+            CheckTb.Text = chek.Numger.ToString();
+            BankTb.Text = chek.Bank.Title.ToString();   
+          
+
+        }
+
+        private void OrderAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var chek = CheckCb.SelectedItem as Chek;
+            var csv = chek.CSV.ToString();
+         
+            if (csv == CSV.Text.Trim())
+            {
+
+
+                Order orderuser = new Order
+                {
+                    Date = DateTime.Now,
+                    Useer = HelpClass.AutoUset,
+                    //  DateEnd = DateTime.Now + 3,
+                    TypePayment = TypePaymentCb.SelectedItem as TypePayment,
+                    DeliveryType = TypedeliveryCb.SelectedItem as DeliveryType,
+                    AdressDelivery = AdressDeliveryTb.Text.Trim(),
+                    DeliveryPoint1 = DeliveryPointCb.SelectedItem as DeliveryPoint,
+                    Check = CheckTb.Text.Trim(),
+                 } ;
+
+
+                App.db.Order.Add(orderuser);
+
+                foreach (Product product in HelpClass.prod) 
+                {
+                    App.db.ProductOrder.Add(new ProductOrder
+                    {
+                        Order = orderuser,
+                        
+                        Product = product,  
+                        StatysOrderId = 1,
+                        Quantity = product.count , 
+                        
+                    });
+                    var sums = product.count * product.Cost;
+                    orderuser.Sum = sums;   
+                   
+                }
+
+                MessageBox.Show("yes");
+                App.db.SaveChanges();   
+
+            }
+            else MessageBox.Show("csv не совпадают, проверьте");
+        }
+
+        private void TypePaymentCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int v = (TypePaymentCb.SelectedItem as TypePayment).Id;
+            if (v == 1)
+            {
+                ChekSt.Visibility = Visibility.Visible;
+                ChekRB.Visibility = Visibility.Visible;
+                CheckCb.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ChekSt.Visibility = Visibility.Collapsed;
+                ChekRB.Visibility = Visibility.Collapsed;
+                CheckCb.Visibility = Visibility.Collapsed;
+            }
+          
         }
     }
 }

@@ -26,5 +26,9 @@ namespace MarketPlaceWpf.Models
                 return null;
             }
         }
+        public int count 
+        {
+            get;set;
+        }
     }
 }

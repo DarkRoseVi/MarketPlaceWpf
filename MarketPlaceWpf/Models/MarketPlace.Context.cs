@@ -26,8 +26,7 @@ namespace MarketPlaceWpf.Models
         }
     
         public virtual DbSet<Bank> Bank { get; set; }
-        public virtual DbSet<Check> Check { get; set; }
-        public virtual DbSet<ChekId> ChekId { get; set; }
+        public virtual DbSet<Chek> Chek { get; set; }
         public virtual DbSet<DeliveryPoint> DeliveryPoint { get; set; }
         public virtual DbSet<DeliveryType> DeliveryType { get; set; }
         public virtual DbSet<Order> Order { get; set; }

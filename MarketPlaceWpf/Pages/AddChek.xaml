@@ -1,0 +1,36 @@
+﻿<Window x:Class="MarketPlaceWpf.Pages.AddChek"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MarketPlaceWpf.Pages"
+        mc:Ignorable="d"
+        Title="AddChek" Height="300" Width="300">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Number"/>
+            <TextBox Text="{Binding Numger}" MaxHeight="13"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="CSV"/>
+                    <TextBox Text="{Binding CSV }" MaxLength="3"
+                             Width="50"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Agr"/>
+                    <DatePicker SelectedDate="{Binding Age}"/>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Text="Bank"/>
+            <ComboBox x:Name="BankCb" DisplayMemberPath="Title"
+                      SelectedItem="{Binding Bank}"/>
+            <Button Content="Save" x:Name="SaveBtn"
+                    Click="SaveBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

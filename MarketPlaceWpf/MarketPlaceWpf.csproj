@@ -76,6 +76,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddChek.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddProvider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,11 +96,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ClientHomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MorePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,10 +133,7 @@
     <Compile Include="Models\Bank.cs">
       <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Check.cs">
-      <DependentUpon>MarketPlace.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChekId.cs">
+    <Compile Include="Models\Chek.cs">
       <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeliveryPoint.cs">
@@ -152,6 +161,7 @@
     <Compile Include="Models\Order.cs">
       <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Partial\Order.cs" />
     <Compile Include="Models\Partial\Product.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>MarketPlace.tt</DependentUpon>
@@ -183,6 +193,9 @@
     <Compile Include="Models\Useer.cs">
       <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddChek.xaml.cs">
+      <DependentUpon>AddChek.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddProvider.xaml.cs">
       <DependentUpon>AddProvider.xaml</DependentUpon>
     </Compile>
@@ -195,11 +208,17 @@
     <Compile Include="Pages\BasketPage.xaml.cs">
       <DependentUpon>BasketPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ClientHomePage.xaml.cs">
+      <DependentUpon>ClientHomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MorePage.xaml.cs">
+      <DependentUpon>MorePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>

@@ -12,22 +12,16 @@ namespace MarketPlaceWpf.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ChekId
+    public partial class Chek
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ChekId()
-        {
-            this.Order = new HashSet<Order>();
-        }
-    
         public int Id { get; set; }
         public string Numger { get; set; }
         public string CSV { get; set; }
         public Nullable<System.DateTime> Age { get; set; }
         public Nullable<int> BankId { get; set; }
+        public Nullable<int> UserId { get; set; }
     
         public virtual Bank Bank { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual Useer Useer { get; set; }
     }
 }

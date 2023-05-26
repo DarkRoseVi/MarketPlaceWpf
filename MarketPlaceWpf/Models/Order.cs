@@ -28,10 +28,10 @@ namespace MarketPlaceWpf.Models
         public Nullable<int> DeliveryTypeId { get; set; }
         public string AdressDelivery { get; set; }
         public Nullable<int> DeliveryPoint { get; set; }
-        public Nullable<int> CheckId { get; set; }
+        public string Check { get; set; }
         public Nullable<int> DeliveryPointId { get; set; }
+        public Nullable<decimal> Sum { get; set; }
     
-        public virtual ChekId ChekId { get; set; }
         public virtual DeliveryPoint DeliveryPoint1 { get; set; }
         public virtual DeliveryType DeliveryType { get; set; }
         public virtual TypePayment TypePayment { get; set; }

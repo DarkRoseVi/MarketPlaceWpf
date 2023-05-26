@@ -44,7 +44,7 @@ namespace MarketPlaceWpf.Pages
             {
                 //MessageBox.Show("Welcome " + HelpClass.AutoUset.Name);
                 NavigationService.Navigate(new HomePage());
-
+                HelpClass.AutoUset = user;
             }
             else 
             {
@@ -52,7 +52,7 @@ namespace MarketPlaceWpf.Pages
                 MessageBox.Show("such user already exists ");
                 if (MessageBox.Show("you want to register", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    HelpClass.AutoUset = user;
+                   
                     NavigationService.Navigate(new RegPage());
                 }
 

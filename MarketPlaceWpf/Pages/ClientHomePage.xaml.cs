@@ -11,21 +11,33 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using MarketPlaceWpf.Pages;
 using System.Windows.Shapes;
 
-namespace MarketPlaceWpf
+namespace MarketPlaceWpf.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ClientHomePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ClientHomePage : Page
     {
-        public MainWindow()
+        public ClientHomePage()
         {
             InitializeComponent();
-            MyFrame.NavigationService.Navigate(new AutoPage());
-           //MyFrame.NavigationService.Navigate(new HomePage());  
+        }
+
+        private void EditInfoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

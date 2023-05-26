@@ -28,9 +28,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="Description"/>
+                <TextBlock Text="Description" Margin="5"/>
                 <TextBox Text="{Binding Descriprion}"
-                      
+                      Margin="5"
                    Height="50" TextWrapping="Wrap"
                          />
             </StackPanel>

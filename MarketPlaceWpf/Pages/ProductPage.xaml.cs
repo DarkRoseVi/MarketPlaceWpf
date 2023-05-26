@@ -45,7 +45,13 @@ namespace MarketPlaceWpf.Pages
 
         private void AddBtn_Click_1(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new InfoPage(new Product()));
+        }
 
+        private void MoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var prod = (sender as Button).DataContext as Product;
+            NavigationService.Navigate(new MorePage(prod));
         }
     }
 }

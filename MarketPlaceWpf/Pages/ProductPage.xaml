@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MarketPlaceWpf.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="383" d:DesignWidth="700"
       Title="ProductPage"
       Loaded="Page_Loaded">
 
@@ -33,7 +33,7 @@
                     VerticalAlignment="Top"
                     />
 
-     
+           
 
         </StackPanel>
         <ListView Grid.Row="1" 
@@ -71,7 +71,14 @@
                                     x:Name="InformationBtn"
                                    Click="InformationBtn_Click"
                                     Margin="5"/>
-                        </StackPanel>
+                            
+                                <Button Content="More"
+                                        Margin="5"
+                                        x:Name="MoreBtn"
+                                        Click="MoreBtn_Click"
+                                           />
+
+                            </StackPanel>
                     </Grid>
                     </Border>
                 </DataTemplate>
