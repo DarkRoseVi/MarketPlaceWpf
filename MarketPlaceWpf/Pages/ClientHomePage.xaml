@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:MarketPlaceWpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="383" d:DesignWidth="700"
-      Title="ClientHomePage">
+      Title="ClientHomePage"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,23 +20,29 @@
             
             <StackPanel Orientation="Vertical">
             <TextBlock Text="Картинка профиля" Margin="5"/>
-                <Image Source="{Binding Photo}" Margin="5"
+                <Image x:Name="ImageHome" Margin="5"
+                       Source="{Binding Photo}"
                        Width="150" Height="150"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="last Name" Margin="5"/>
-                <TextBlock Text="{Binding LastName}" Margin="5"/>
+                <TextBlock Text="{Binding LastName}"
+                          Name="LastNameTb" Margin="5"/>
+                
+                <TextBlock Text="{Binding Id}" Margin="5"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Name" Margin="5"/>
-                <TextBlock Text="{Binding Name}" Margin="5"/>
+                <TextBlock Text="{Binding Name}"
+                           Name ="NameTb"  Margin="5"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Sur Name" Margin="5"/>
-                <TextBlock Text="{Binding SurName}" Margin="5"/>
+                <TextBlock Text="{Binding SurName}" 
+                           Name="SurNameTb" Margin="5"/>
             </StackPanel>
             
             <Button Content="Edit Info" Name="EditInfoBtn"
@@ -47,7 +55,8 @@
                     x:Name="AddBtn"
                     Click="AddBtn_Click"/>
             <ListView DockPanel.Dock="Top" Width="auto" Height="160" 
-                      d:ItemsSource="{d:SampleData ItemCount=5}">
+                      d:ItemsSource="{d:SampleData ItemCount=5}"
+                      x:Name="ChekLw">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -61,8 +70,8 @@
                         
                             <StackPanel Grid.Row="0" Grid.Column="0"
                                         Orientation="Horizontal">
-                                <TextBlock Text="fsdf" Margin="5"/>
-                                <TextBlock Text="{Binding Chek}" Margin="5"/>
+                                <TextBlock Text="Счет" Margin="5"/>
+                                <TextBlock Text="{Binding Numger}" Margin="5"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Grid.Row="0">
                             <Button  Height="20"
@@ -77,11 +86,55 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <DataGrid DockPanel.Dock="Bottom" Width="auto" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <ListView  DockPanel.Dock="Bottom" Width="auto"
+                       x:Name="OrderLw"
+                       d:ItemsSource="{d:SampleData ItemCount=5}" 
+                    >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/> 
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Row="0" Grid.Column="0">
+                                <TextBlock Text="Number" Margin="5"/>
+                                <TextBlock  Text="{Binding Order.Id }" Margin="5"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text="DateEnd" Margin="5"/>
+                                <TextBlock Text="{Binding DateEnd}" Margin="5"/>
+
+                                <TextBlock Text="User id"/>
+                                <TextBlock Text="{Binding Order.Useer.Name}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Product"/>
+                                <TextBlock Text ="{Binding Product.Title}"/>
+                                <!--<ItemsControl x:Name="OrderPRodLW" ItemsSource="{Binding ProductOrder}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Product.Title}" Margin="0 0 0 10"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>-->
+                            </StackPanel>
+                            <StackPanel Grid.Column="3">
+                                <Button Content="Info" x:Name="InfoOrrderBtn"
+                                        Click="InfoOrrderBtn_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+    
+            </ListView>
 
         </DockPanel>
         

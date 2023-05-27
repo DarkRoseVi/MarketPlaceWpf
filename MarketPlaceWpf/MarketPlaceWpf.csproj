@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddImagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddProvider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,7 +104,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\EditInfoProvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InfoOrderHomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,6 +208,9 @@
     <Compile Include="Pages\AddChek.xaml.cs">
       <DependentUpon>AddChek.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddImagePage.xaml.cs">
+      <DependentUpon>AddImagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddProvider.xaml.cs">
       <DependentUpon>AddProvider.xaml</DependentUpon>
     </Compile>
@@ -211,8 +226,14 @@
     <Compile Include="Pages\ClientHomePage.xaml.cs">
       <DependentUpon>ClientHomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditInfoProvPage.xaml.cs">
+      <DependentUpon>EditInfoProvPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InfoOrderHomePage.xaml.cs">
+      <DependentUpon>InfoOrderHomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>

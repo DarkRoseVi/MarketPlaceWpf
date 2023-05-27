@@ -49,5 +49,10 @@ namespace MarketPlaceWpf.Pages
         {
             MyFrame.NavigationService.Navigate(new BasketPage());   
         }
+
+        private void InfoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new ClientHomePage());   
+        }
     }
 }

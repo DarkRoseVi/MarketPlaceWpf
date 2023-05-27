@@ -83,7 +83,8 @@ namespace MarketPlaceWpf.Pages
                     Check = CheckTb.Text.Trim(),
                  } ;
 
-
+                var random = new Random();  
+                string randinstring = new string(Enumerable.Repeat("123456789", 13).Select(s => s[random.Next(s.Length)]).ToArray());
                 App.db.Order.Add(orderuser);
 
                 foreach (Product product in HelpClass.prod) 
@@ -91,12 +92,12 @@ namespace MarketPlaceWpf.Pages
                     App.db.ProductOrder.Add(new ProductOrder
                     {
                         Order = orderuser,
-                        
-                        Product = product,  
+                        BarCode = Convert.ToString(randinstring),
+                        Product = product,
                         StatysOrderId = 1,
-                        Quantity = product.count , 
-                        
-                    });
+                        Quantity = product.count,
+
+                    }) ;
                     var sums = product.count * product.Cost;
                     orderuser.Sum = sums;   
                    

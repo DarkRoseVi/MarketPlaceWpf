@@ -41,7 +41,9 @@
                 <Button Width="90" Content="Basket"
                         x:Name="BasketBtn"
                         Click="BasketBtn_Click"/>
-
+                <Button Content="Info"
+                        Name="InfoBtn"
+                        Click="InfoBtn_Click"/>
             </StackPanel>
             <Frame DockPanel.Dock="Top" x:Name="MyFrame"></Frame>
 

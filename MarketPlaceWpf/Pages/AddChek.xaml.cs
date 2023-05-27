@@ -1,6 +1,7 @@
 ﻿using MarketPlaceWpf.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,18 +27,42 @@ namespace MarketPlaceWpf.Pages
             InitializeComponent();
             BankCb.ItemsSource = App.db.Bank.ToList();
             contextchek = chek;
-            DataContext = contextchek;  
+            DataContext = contextchek;
+            contextchek.UserId = HelpClass.AutoUset.Id;
 
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (contextchek.Id == 0 )
+            if (string.IsNullOrEmpty(contextchek.Numger))
+            {
+                MessageBox.Show("Number is null");
+                return;
+            }
+            else if (string.IsNullOrEmpty(contextchek.CSV))
+            {
+                MessageBox.Show("CSV is null");
+                return;
+            }
+            else if (contextchek.Age == null)
+            {
+                MessageBox.Show("Date is null");
+                return;
+            }
+            else if (contextchek.Bank == null)
+            {
+                MessageBox.Show("Bank is null");
+                return;
+            }
+            else 
+            { 
+            if (contextchek.Id == 0)
             {
                 App.db.Chek.Add(contextchek);
             }
             MessageBox.Show("yes");
             App.db.SaveChanges();   
+            }
 
         
         }

@@ -7,11 +7,11 @@
       <Diagram DiagramId="24d654bff3cf41c2ace51960239c939e" Name="Diagram1">
         <EntityTypeShape EntityType="MArketPlaceAVModel.Bank" Width="1.5" PointX="3" PointY="1.25" />
         <EntityTypeShape EntityType="MArketPlaceAVModel.Chek" Width="1.5" PointX="5.25" PointY="4.75" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.DeliveryPoint" Width="1.5" PointX="6" PointY="10.5" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.DeliveryType" Width="1.5" PointX="6" PointY="1.875" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.DeliveryPoint" Width="1.5" PointX="6" PointY="1.875" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.DeliveryType" Width="1.5" PointX="6" PointY="10.5" />
         <EntityTypeShape EntityType="MArketPlaceAVModel.Order" Width="1.5" PointX="8.25" PointY="4" />
         <EntityTypeShape EntityType="MArketPlaceAVModel.Product" Width="1.5" PointX="8.25" PointY="13.5" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.ProductOrder" Width="1.5" PointX="10.5" PointY="4.75" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.ProductOrder" Width="1.5" PointX="10.5" PointY="4.625" />
         <EntityTypeShape EntityType="MArketPlaceAVModel.ProductPhoto" Width="1.5" PointX="10.5" PointY="14.25" />
         <EntityTypeShape EntityType="MArketPlaceAVModel.Provider" Width="1.5" PointX="6" PointY="15.5" />
         <EntityTypeShape EntityType="MArketPlaceAVModel.Role" Width="1.5" PointX="0.75" PointY="5.25" />

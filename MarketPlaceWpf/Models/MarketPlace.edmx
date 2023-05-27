@@ -75,6 +75,7 @@
           <Property Name="OrderId" Type="int" />
           <Property Name="StatysOrderId" Type="int" />
           <Property Name="Quantity" Type="int" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="13" />
         </EntityType>
         <EntityType Name="ProductPhoto">
           <Key>
@@ -525,6 +526,7 @@
           <Property Name="OrderId" Type="Int32" />
           <Property Name="StatysOrderId" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
+          <Property Name="BarCode" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="MArketPlaceAVModel.FK_ProductOrder_Order" FromRole="ProductOrder" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="MArketPlaceAVModel.FK_ProductOrder_Product" FromRole="ProductOrder" ToRole="Product" />
           <NavigationProperty Name="StatysOrder" Relationship="MArketPlaceAVModel.FK_ProductOrder_StatysOrder" FromRole="ProductOrder" ToRole="StatysOrder" />
@@ -837,6 +839,7 @@
           <EntitySetMapping Name="ProductOrder">
             <EntityTypeMapping TypeName="MArketPlaceAVModel.ProductOrder">
               <MappingFragment StoreEntitySet="ProductOrder">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="StatysOrderId" ColumnName="StatysOrderId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
