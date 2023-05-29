@@ -41,7 +41,7 @@ namespace MarketPlaceWpf.Pages
                 ImageProf.Source = new BitmapImage(new Uri(openfil.FileName));  
             }
             contextuser.Photo = image;
-            MessageBox.Show("image save");
+            MessageBox.Show("image saved");
             App.db.SaveChanges();   
         }
 

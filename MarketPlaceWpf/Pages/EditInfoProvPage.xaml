@@ -9,18 +9,18 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Last name" Margin="5"/>
-                <TextBox Text="{Binding LastName}"/>
+                <TextBlock Text="Last Name" Margin="5"/>
+                <TextBox Text="{Binding LastName}" PreviewTextInput="TextBox_PreviewTextInput"/>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Name" Margin="5"/>
-                <TextBox Text="{Binding Name}" Margin="5"/>
+                <TextBox Text="{Binding Name}" Margin="5" PreviewTextInput="TextBox_PreviewTextInput_1"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Sur name" Margin="5"/>
-                <TextBox Text="{Binding SurName}" Margin="5"/>
+                <TextBlock Text="Surname" Margin="5"/>
+                <TextBox Text="{Binding SurName}"  Margin="5" PreviewTextInput="TextBox_PreviewTextInput_2"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -37,9 +37,15 @@
         
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Add image" x:Name="AddImageBtn" Click="AddImageBtn_Click"/>
-                <Button Content="Save" x:Name="SaveBtn" Click="SaveBtn_Click"/>
-                <Button Content="Exit" x:Name="ExitBtn" Click="ExitBtn_Click"/>
+                <Button Content="Add Image" x:Name="AddImageBtn" 
+                    
+                        Click="AddImageBtn_Click"/>
+                <Button Content="Save" x:Name="SaveBtn" 
+                        Width="60"
+                        Click="SaveBtn_Click"/>
+                <Button Content="Exit" x:Name="ExitBtn" 
+                        Width="60"
+                        Click="ExitBtn_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

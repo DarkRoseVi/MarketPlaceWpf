@@ -37,6 +37,8 @@ namespace MarketPlaceWpf.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (TitleTb.Text.Trim().Length > 0 && AdressTb.Text.Trim().Length > 0 )
+            {
             if (contextProvider.Id == 0)
             {
                 App.db.Provider.Add(contextProvider);
@@ -44,6 +46,9 @@ namespace MarketPlaceWpf.Pages
             MessageBox.Show("yes");
             App.db.SaveChanges();
             Close();
+
+            }
+            else MessageBox.Show("Fill in the name and address");
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)

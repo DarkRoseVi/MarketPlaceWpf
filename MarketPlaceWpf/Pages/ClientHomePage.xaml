@@ -88,8 +88,7 @@
 
             <ListView  DockPanel.Dock="Bottom" Width="auto"
                        x:Name="OrderLw"
-                       d:ItemsSource="{d:SampleData ItemCount=5}" 
-                    >
+                       d:ItemsSource="{d:SampleData ItemCount=5}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -104,18 +103,15 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Row="0" Grid.Column="0">
+                            <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
                                 <TextBlock Text="Number" Margin="5"/>
                                 <TextBlock  Text="{Binding Order.Id }" Margin="5"/>
                             </StackPanel>
-                            <StackPanel Grid.Row="0" Grid.Column="1">
-                                <TextBlock Text="DateEnd" Margin="5"/>
-                                <TextBlock Text="{Binding DateEnd}" Margin="5"/>
-
+                            <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
                                 <TextBlock Text="User id"/>
                                 <TextBlock Text="{Binding Order.Useer.Name}"/>
                             </StackPanel>
-                            <StackPanel Grid.Column="2">
+                            <StackPanel Grid.Column="2" Margin="5">
                                 <TextBlock Text="Product"/>
                                 <TextBlock Text ="{Binding Product.Title}"/>
                                 <!--<ItemsControl x:Name="OrderPRodLW" ItemsSource="{Binding ProductOrder}">
@@ -126,7 +122,7 @@
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>-->
                             </StackPanel>
-                            <StackPanel Grid.Column="3">
+                            <StackPanel Grid.Column="3"  Margin="5">
                                 <Button Content="Info" x:Name="InfoOrrderBtn"
                                         Click="InfoOrrderBtn_Click"/>
                             </StackPanel>

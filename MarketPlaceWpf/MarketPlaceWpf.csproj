@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddDeliveryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddImagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +112,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\GirvOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HomaPageRole5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RegPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TypePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,6 +224,9 @@
     <Compile Include="Pages\AddChek.xaml.cs">
       <DependentUpon>AddChek.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddDeliveryPage.xaml.cs">
+      <DependentUpon>AddDeliveryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddImagePage.xaml.cs">
       <DependentUpon>AddImagePage.xaml</DependentUpon>
     </Compile>
@@ -229,6 +248,12 @@
     <Compile Include="Pages\EditInfoProvPage.xaml.cs">
       <DependentUpon>EditInfoProvPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GirvOrderPage.xaml.cs">
+      <DependentUpon>GirvOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomaPageRole5.xaml.cs">
+      <DependentUpon>HomaPageRole5.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -249,6 +274,9 @@
     </Compile>
     <Compile Include="Pages\RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TypePage.xaml.cs">
+      <DependentUpon>TypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TypeProductPage.xaml.cs">
       <DependentUpon>TypeProductPage.xaml</DependentUpon>
@@ -291,7 +319,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resoures\png-transparent-electric-blue-symbol-easyfind-blue-electric-blue-application.png" />
+    <Resource Include="Resoures\png-transparent-electric-blue-symbol-easyfind-blue-electric-blue-application.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\MarketPlace.Context.tt">
@@ -304,10 +334,18 @@
       <DependentUpon>MarketPlace.edmx</DependentUpon>
       <LastGenOutput>MarketPlace.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resoures\фон.png" />
-    <Resource Include="Resoures\логотип.png" />
-    <Resource Include="Resoures\201f0cdf3f9a2a4efff1abb2c507a472.png" />
-    <Resource Include="Resoures\63656.png" />
+    <Resource Include="Resoures\фон.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resoures\логотип.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resoures\201f0cdf3f9a2a4efff1abb2c507a472.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resoures\63656.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

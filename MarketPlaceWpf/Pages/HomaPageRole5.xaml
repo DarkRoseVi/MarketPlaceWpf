@@ -1,4 +1,4 @@
-﻿<Page x:Class="MarketPlaceWpf.Pages.HomePage"
+﻿<Page x:Class="MarketPlaceWpf.Pages.HomaPageRole5"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MarketPlaceWpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HomePage">
+      Title="HomaPageRole5">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -22,21 +22,16 @@
         <Button x:Name="ExitBtn"
                       VerticalAlignment="Top" HorizontalAlignment="Right"
                         Content="Exit" Margin="15"
-                        Click="ExitBtn_Click" Width="100"/>
+                       Click="ExitBtn_Click" Width="100"/>
         <DockPanel Grid.Row="2">
 
             <StackPanel DockPanel.Dock="Left" Background="#FF1854C7"
                        >
-          
+
                 <Button Width="90" Content="Product" VerticalAlignment="Top"
                         x:Name="ProductBtn" Click="ProductBtn_Click"/>
 
-                <Button Width="90" Content="Provider" 
-                        x:Name="ProviderBtn" Click="ProviderBtn_Click"/>
-                
-                <Button Width="90" Content="Type Product"
-                        x:Name="TypepProdBtn"
-                        Click="TypepProdBtn_Click"/>
+
 
                 <Button Width="90" Content="Basket"
                         x:Name="BasketBtn"
@@ -45,11 +40,6 @@
                         Name="InfoBtn"
                         Click="InfoBtn_Click"/>
 
-                <Button Content="Giv order"
-                        x:Name="GivOrderBtn"
-                        Click="GivOrderBtn_Click"/>
-
-               
             </StackPanel>
             <Frame DockPanel.Dock="Top" x:Name="MyFrame"></Frame>
 

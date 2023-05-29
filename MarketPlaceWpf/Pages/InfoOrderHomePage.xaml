@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MarketPlaceWpf.Pages"
         mc:Ignorable="d"
-        Title="InfoOrderHomePage" Height="400" Width="400">
+        Title="InfoOrderHomePage" Height="600" Width="400">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
@@ -24,13 +24,18 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="DarCode" Margin="5"/>
-                <TextBlock Text="{Binding BarCode}" Margin="5"/>
+                <TextBlock Text="{Binding BarCode}" Margin="5" />
             </StackPanel>
+                <TextBox Name="BarCode" TextChanged="BarCode_TextChanged" />
             <StackPanel Orientation="Vertical">
-                <Image Width="150" Height="150" x:Name="ImageBarCode"/>
-                <Button Content="Получить" Name="GivBtn" Click="GivBtn_Click"/>
+                <Border Height="252" Width="349" BorderBrush="Black" BorderThickness="1">
+                    <InkCanvas x:Name="barcodeCan" Height="250" Width="347" Background="White" EditingMode="GestureOnly" IsEnabled="False">
+                    </InkCanvas>
+                </Border>
+                <!--<Image Width="150" Height="150" x:Name="ImageBarCode"/>-->
+                <!--<Button Content="Получить" Name="GivBtn" Click="GivBtn_Click"/>-->
             </StackPanel>
-            <Button x:Name="Exit" Click="Exit_Click"/>
+            <Button x:Name="Exit" Content="Exit" Click="Exit_Click"/>
         </StackPanel>
     </Grid>
 </Window>

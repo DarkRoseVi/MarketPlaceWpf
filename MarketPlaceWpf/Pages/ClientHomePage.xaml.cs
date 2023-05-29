@@ -27,11 +27,6 @@ namespace MarketPlaceWpf.Pages
         public Useer contextuser;
 
 
-
- 
-      
-
-
         public ClientHomePage()
         {
 

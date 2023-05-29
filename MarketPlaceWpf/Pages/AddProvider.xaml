@@ -13,12 +13,12 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
                 <TextBlock Text="Title"/>
-                <TextBox Text="{Binding Title}"/>
+                <TextBox x:Name="TitleTb" Text="{Binding Title}"/>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Adress"/>
-                <TextBox Text="{Binding Adress}"/>
+                <TextBox x:Name="AdressTb" Text="{Binding Adress}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

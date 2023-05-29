@@ -43,8 +43,13 @@ namespace MarketPlaceWpf.Pages
             if (user != null)
             {
                 //MessageBox.Show("Welcome " + HelpClass.AutoUset.Name);
-                NavigationService.Navigate(new HomePage());
                 HelpClass.AutoUset = user;
+                if (user.RoleId == 5)
+                {
+               NavigationService.Navigate(new HomaPageRole5());               
+                        } 
+                else NavigationService.Navigate(new HomePage());
+
             }
             else 
             {

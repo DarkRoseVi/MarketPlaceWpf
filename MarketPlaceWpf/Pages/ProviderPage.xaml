@@ -36,7 +36,7 @@
         <DataGrid IsReadOnly="True"
                   AutoGenerateColumns="False"
                    ColumnWidth="*" 
-                  x:Name="ProviderDt" Margin="0,54,0,4" Grid.RowSpan="2">
+                  x:Name="ProviderDt"  Grid.Row="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title"
                                     Binding="{Binding Title}"/>
