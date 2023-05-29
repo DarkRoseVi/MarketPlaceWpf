@@ -10,49 +10,61 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="383*"/>
+            <RowDefinition Height="78*"/>
+
+            <RowDefinition Height="341*"/>
         </Grid.RowDefinitions>
-        <Rectangle Fill="#FF1854C7" Opacity="0.6"/>
-        <Image Source="\Resoures\логотип.png"
+        <!--<Rectangle Fill="#FF1854C7" Opacity="0.6"/>-->
+        <StackPanel Orientation="Horizontal">
+            <Image Source="\Resoures\логотип.png"
                Width="90"
                Margin="5 0 0 0 "
                Height="100"
                HorizontalAlignment="Left"/>
-        <Button x:Name="ExitBtn"
-                      VerticalAlignment="Top" HorizontalAlignment="Right"
-                        Content="Exit" Margin="15"
-                        Click="ExitBtn_Click" Width="100"/>
-        <DockPanel Grid.Row="2">
 
-            <StackPanel DockPanel.Dock="Left" Background="#FF1854C7"
-                       >
-          
-                <Button Width="90" Content="Product" VerticalAlignment="Top"
-                        x:Name="ProductBtn" Click="ProductBtn_Click"/>
-
-                <Button Width="90" Content="Provider" 
-                        x:Name="ProviderBtn" Click="ProviderBtn_Click"/>
+            <StackPanel Orientation="Vertical" >
                 
-                <Button Width="90" Content="Type Product"
+            <StackPanel Orientation="Horizontal" Margin="5">
+                
+            <Button Width="90" Content="Product" 
+                        x:Name="ProductBtn" Click="ProductBtn_Click" Margin="5"/>
+
+            <Button Width="90" Content="Provider" 
+                        x:Name="ProviderBtn" Click="ProviderBtn_Click"/>
+
+            <Button Width="90" Content="Type Product"
                         x:Name="TypepProdBtn"
                         Click="TypepProdBtn_Click"/>
 
-                <Button Width="90" Content="Basket"
+            <Button Width="90" Content="Basket"
                         x:Name="BasketBtn"
                         Click="BasketBtn_Click"/>
-                <Button Content="Info"
+            <Button Content="Info"
                         Name="InfoBtn"
                         Click="InfoBtn_Click"/>
 
-                <Button Content="Giv order"
+            <Button Content="Giv order"
                         x:Name="GivOrderBtn"
                         Click="GivOrderBtn_Click"/>
-
-               
             </StackPanel>
-            <Frame DockPanel.Dock="Top" x:Name="MyFrame"></Frame>
+                <StackPanel Orientation="Vertical">
+                    <Button Content="Delivety" Name="DeliveryBtn"
+                            Click="DeliveryBtn_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
 
-        </DockPanel>
+
+   
+        
+
+        <Button x:Name="ExitBtn"
+                      VerticalAlignment="Top" HorizontalAlignment="Right"
+                        Content="Exit" Margin="0,15,15,0"
+                        Click="ExitBtn_Click" Width="100"/>
+   
+           
+        <Frame Grid.Row="2" x:Name="MyFrame"></Frame>
+
     </Grid>
 </Page>

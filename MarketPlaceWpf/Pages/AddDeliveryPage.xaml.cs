@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using MarketPlaceWpf.Models;
 using MarketPlaceWpf.Pages;
 using System.Windows.Shapes;
+using System.Windows.Navigation;
 
 namespace MarketPlaceWpf.Pages
 {
@@ -42,15 +43,21 @@ namespace MarketPlaceWpf.Pages
                 App.db.SaveChanges();
             }
             else MessageBox.Show("Fill in the title");
+         //   TypePage.();
 
         }
 
         private void TitleTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!Char.IsDigit(e.Text, 0))
+            if (!Char.IsLetter(e.Text, 0))
             {
                 e.Handled = true;
             }
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

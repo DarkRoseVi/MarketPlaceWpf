@@ -10,7 +10,7 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
                     VerticalAlignment="Center">
             <TextBlock Text="Title"/>
-            <TextBox Text="{Binding Title}"/>
+            <TextBox x:Name="TitleTb" Text="{Binding Title}"/>
 
         <Button Content="Save" Name="SaveBtn"
                 Click="SaveBtn_Click"

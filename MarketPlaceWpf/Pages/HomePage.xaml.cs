@@ -59,5 +59,10 @@ namespace MarketPlaceWpf.Pages
         {
             new GirvOrderPage().Show();
         }
+
+        private void DeliveryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new TypePage()); 
+        }
     }
 }

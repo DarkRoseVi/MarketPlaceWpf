@@ -31,13 +31,18 @@ namespace MarketPlaceWpf.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (contextTypeProduct.Id == 0)
+            if (TitleTb.Text.Trim().Length > 0 )
             {
-                App.db.TypeProduct.Add(contextTypeProduct);
+
+                if (contextTypeProduct.Id == 0)
+                {
+                    App.db.TypeProduct.Add(contextTypeProduct);
+                }
+                MessageBox.Show("Type product saved");
+                App.db.SaveChanges();
+                Close();
             }
-            MessageBox.Show("Yes");
-            App.db.SaveChanges();  
-            Close();    
+            else MessageBox.Show("Fill in the title");
         }
     }
 }

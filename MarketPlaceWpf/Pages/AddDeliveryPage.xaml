@@ -10,8 +10,10 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
                     VerticalAlignment="Center">
             <TextBlock Text="Title"/>
-            <TextBox x:Name="TitleTb" PreviewTextInput="TitleTb_PreviewTextInput"/>
+            <TextBox x:Name="TitleTb" Text="{Binding Title}" PreviewTextInput="TitleTb_PreviewTextInput"/>
             <Button Content="Save" x:Name="SaveBtn" Click="SaveBtn_Click"/>
+            <Button Content="Exit" x:Name="ExitBtn" Click="ExitBtn_Click"/>
+       
         </StackPanel>
     </Grid>
 </Window>
