@@ -84,11 +84,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AdDelivetyPointPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddImagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AddProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddRoleWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,7 +116,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DeliveryPointPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\EditInfoProvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditStatusProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,6 +156,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\OrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,11 +172,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RolePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TypePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TypeProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,6 +223,7 @@
     </Compile>
     <Compile Include="Models\Partial\Order.cs" />
     <Compile Include="Models\Partial\Product.cs" />
+    <Compile Include="Models\Partial\ProductOrder.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
@@ -201,6 +234,9 @@
       <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Provider.cs">
+      <DependentUpon>MarketPlace.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Review.cs">
       <DependentUpon>MarketPlace.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
@@ -227,11 +263,17 @@
     <Compile Include="Pages\AddDeliveryPage.xaml.cs">
       <DependentUpon>AddDeliveryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdDelivetyPointPage.xaml.cs">
+      <DependentUpon>AdDelivetyPointPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddImagePage.xaml.cs">
       <DependentUpon>AddImagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddProvider.xaml.cs">
       <DependentUpon>AddProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddRoleWindows.xaml.cs">
+      <DependentUpon>AddRoleWindows.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddTypeProduct.xaml.cs">
       <DependentUpon>AddTypeProduct.xaml</DependentUpon>
@@ -245,8 +287,17 @@
     <Compile Include="Pages\ClientHomePage.xaml.cs">
       <DependentUpon>ClientHomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DeliveryPointPage.xaml.cs">
+      <DependentUpon>DeliveryPointPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditInfoProvPage.xaml.cs">
       <DependentUpon>EditInfoProvPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditOrderPage.xaml.cs">
+      <DependentUpon>EditOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditStatusProductPage.xaml.cs">
+      <DependentUpon>EditStatusProductPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\GirvOrderPage.xaml.cs">
       <DependentUpon>GirvOrderPage.xaml</DependentUpon>
@@ -266,6 +317,9 @@
     <Compile Include="Pages\MorePage.xaml.cs">
       <DependentUpon>MorePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\OrderPage.xaml.cs">
+      <DependentUpon>OrderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
     </Compile>
@@ -275,11 +329,17 @@
     <Compile Include="Pages\RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RolePage.xaml.cs">
+      <DependentUpon>RolePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TypePage.xaml.cs">
       <DependentUpon>TypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TypeProductPage.xaml.cs">
       <DependentUpon>TypeProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -19,6 +19,7 @@ namespace MarketPlaceWpf.Models
         {
             this.ProductOrder = new HashSet<ProductOrder>();
             this.ProductPhoto = new HashSet<ProductPhoto>();
+            this.Review = new HashSet<Review>();
         }
     
         public int Id { get; set; }
@@ -36,5 +37,7 @@ namespace MarketPlaceWpf.Models
         public virtual ICollection<ProductOrder> ProductOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductPhoto> ProductPhoto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Review { get; set; }
     }
 }

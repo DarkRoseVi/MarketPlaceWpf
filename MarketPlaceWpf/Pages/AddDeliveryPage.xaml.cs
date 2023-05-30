@@ -41,9 +41,10 @@ namespace MarketPlaceWpf.Pages
                 }
                 MessageBox.Show("Delivery type saved");
                 App.db.SaveChanges();
+               
             }
             else MessageBox.Show("Fill in the title");
-         //   TypePage.();
+            DialogResult = true;
 
         }
 
@@ -57,7 +58,7 @@ namespace MarketPlaceWpf.Pages
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-           
+            DialogResult = false;
         }
     }
 }

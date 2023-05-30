@@ -64,5 +64,25 @@ namespace MarketPlaceWpf.Pages
         {
             MyFrame.NavigationService.Navigate(new TypePage()); 
         }
+
+        private void Orderbtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new OrderPage());
+        }
+
+        private void DeliveryPointBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new DeliveryPointPage());    
+        }
+
+        private void RoleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new RolePage()); 
+        }
+
+        private void UserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.NavigationService.Navigate(new UserPage());
+        }
     }
 }

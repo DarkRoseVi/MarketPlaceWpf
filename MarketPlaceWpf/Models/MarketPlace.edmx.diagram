@@ -5,24 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="24d654bff3cf41c2ace51960239c939e" Name="Diagram1">
-        <EntityTypeShape EntityType="MArketPlaceAVModel.Bank" Width="1.5" PointX="3" PointY="1.25" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.Chek" Width="1.5" PointX="5.25" PointY="4.75" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.DeliveryPoint" Width="1.5" PointX="6" PointY="1.875" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.DeliveryType" Width="1.5" PointX="6" PointY="10.5" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.Order" Width="1.5" PointX="8.25" PointY="4" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.Product" Width="1.5" PointX="8.25" PointY="13.5" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.ProductOrder" Width="1.5" PointX="10.5" PointY="4.625" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.ProductPhoto" Width="1.5" PointX="10.5" PointY="14.25" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.Provider" Width="1.5" PointX="6" PointY="15.5" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.Role" Width="1.5" PointX="0.75" PointY="5.25" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.StatysOrder" Width="1.5" PointX="8.25" PointY="0.75" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.875" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.TypePayment" Width="1.5" PointX="6" PointY="8.25" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.TypeProduct" Width="1.5" PointX="6" PointY="13.125" />
-        <EntityTypeShape EntityType="MArketPlaceAVModel.Useer" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.Bank" Width="1.5" PointX="6.75" PointY="13.875" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.Chek" Width="1.5" PointX="9" PointY="13.375" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.DeliveryPoint" Width="1.5" PointX="3.75" PointY="21.75" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.DeliveryType" Width="1.5" PointX="3.75" PointY="17.125" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.Order" Width="1.5" PointX="6" PointY="16.25" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.Product" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.ProductOrder" Width="1.5" PointX="8.25" PointY="4" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.Provider" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.Review" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.Role" Width="1.5" PointX="1.5" PointY="13.875" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.StatysOrder" Width="1.5" PointX="6" PointY="10.625" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.TypePayment" Width="1.5" PointX="3.75" PointY="19.5" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.TypeProduct" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="MArketPlaceAVModel.Useer" Width="1.5" PointX="3.75" PointY="13" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_ChekId_Bank" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_Chek_Useer" />
-        <AssociationConnector Association="MArketPlaceAVModel.FK_Order_DeliveryPoint" />
+        <AssociationConnector Association="MArketPlaceAVModel.FK_Order_DeliveryPoint1" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_Order_DeliveryType" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_Order_TypePayment" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_Order_Useer" />
@@ -31,7 +32,9 @@
         <AssociationConnector Association="MArketPlaceAVModel.FK_Product_TypeProduct" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_ProductOrder_Product" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_ProductPhoto_Product" />
+        <AssociationConnector Association="MArketPlaceAVModel.FK_Review_Product" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_ProductOrder_StatysOrder" />
+        <AssociationConnector Association="MArketPlaceAVModel.FK_Review_Useer" />
         <AssociationConnector Association="MArketPlaceAVModel.FK_Useer_Role" />
       </Diagram>
     </edmx:Diagrams>

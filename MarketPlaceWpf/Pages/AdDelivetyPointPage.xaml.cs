@@ -1,7 +1,6 @@
 ﻿using MarketPlaceWpf.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,47 +11,45 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MarketPlaceWpf.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddProvider.xaml
+    /// Логика взаимодействия для AdDelivetyPointPage.xaml
     /// </summary>
-    public partial class AddProvider : Window
+    /// 
+    public partial class AdDelivetyPointPage : Window
     {
-        public Provider contextProvider;
-        DbPropertyValues values;
-        public AddProvider(Provider provider)
+        public DeliveryPoint contextDeliveryPoint;
+        public AdDelivetyPointPage(DeliveryPoint deliveryPoint)
         {
             InitializeComponent();
-            contextProvider = provider;
-            DataContext = contextProvider;
-    
+            contextDeliveryPoint = deliveryPoint;
+            DataContext = contextDeliveryPoint;
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (TitleTb.Text.Trim().Length > 0 && AdressTb.Text.Trim().Length > 0 )
+            if (AdressTb.Text.Length>0)
             {
-            if (contextProvider.Id == 0)
+
+            if (contextDeliveryPoint.Id == 0 )
             {
-                App.db.Provider.Add(contextProvider);
+                App.db.DeliveryPoint.Add(contextDeliveryPoint);
             }
-            MessageBox.Show("yes");
-            App.db.SaveChanges();
-            
+            MessageBox.Show("Saved");
+            App.db.SaveChanges();  
+             
+          
             }
-            else MessageBox.Show("Fill in the name and address");
+            else MessageBox.Show("Fill in the field");
             DialogResult = true;
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false; 
+            DialogResult = false;
         }
-
-     
     }
 }

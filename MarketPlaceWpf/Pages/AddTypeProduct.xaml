@@ -15,6 +15,8 @@
         <Button Content="Save" Name="SaveBtn"
                 Click="SaveBtn_Click"
                 Width="50"/>
+            <Button Content=" Exit" Name="ExitBtn"
+                    Click="ExitBtn_Click"/>
         </StackPanel>
     </Grid>
 </Window>

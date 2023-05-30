@@ -17,7 +17,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Numger" Type="nvarchar" MaxLength="13" />
+          <Property Name="Numger" Type="nvarchar" MaxLength="20" />
           <Property Name="CSV" Type="nvarchar" MaxLength="3" />
           <Property Name="Age" Type="date" />
           <Property Name="BankId" Type="int" />
@@ -28,7 +28,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Adress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="DeliveryType">
           <Key>
@@ -48,7 +48,6 @@
           <Property Name="TypePaymentId" Type="int" />
           <Property Name="DeliveryTypeId" Type="int" />
           <Property Name="AdressDelivery" Type="nvarchar(max)" />
-          <Property Name="DeliveryPoint" Type="int" />
           <Property Name="Check" Type="nvarchar" MaxLength="50" />
           <Property Name="DeliveryPointId" Type="int" />
           <Property Name="Sum" Type="decimal" Precision="10" Scale="2" />
@@ -58,7 +57,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Descriprion" Type="nvarchar(max)" />
           <Property Name="Phoro" Type="image" />
           <Property Name="TypeProductId" Type="int" />
@@ -91,7 +90,16 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
-          <Property Name="Adress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="ProductId" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -168,7 +176,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_DeliveryPoint">
+        <Association Name="FK_Order_DeliveryPoint1">
           <End Role="DeliveryPoint" Type="Self.DeliveryPoint" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,6 +296,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Review_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Useer">
+          <End Role="Useer" Type="Self.Useer" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Useer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Useer_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Useer" Type="Self.Useer" Multiplicity="*" />
@@ -310,6 +342,7 @@
           <EntitySet Name="ProductOrder" EntityType="Self.ProductOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductPhoto" EntityType="Self.ProductPhoto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatysOrder" EntityType="Self.StatysOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -324,7 +357,7 @@
             <End Role="Bank" EntitySet="Bank" />
             <End Role="Chek" EntitySet="Chek" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_DeliveryPoint" Association="Self.FK_Order_DeliveryPoint">
+          <AssociationSet Name="FK_Order_DeliveryPoint1" Association="Self.FK_Order_DeliveryPoint1">
             <End Role="DeliveryPoint" EntitySet="DeliveryPoint" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
@@ -364,6 +397,14 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductPhoto" EntitySet="ProductPhoto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Review_Product" Association="Self.FK_Review_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Useer" Association="Self.FK_Review_Useer">
+            <End Role="Useer" EntitySet="Useer" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
           <AssociationSet Name="FK_Useer_Role" Association="Self.FK_Useer_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Useer" EntitySet="Useer" />
@@ -383,6 +424,7 @@
           <EntitySet Name="ProductOrder" EntityType="MArketPlaceAVModel.ProductOrder" />
           <EntitySet Name="ProductPhoto" EntityType="MArketPlaceAVModel.ProductPhoto" />
           <EntitySet Name="Provider" EntityType="MArketPlaceAVModel.Provider" />
+          <EntitySet Name="Review" EntityType="MArketPlaceAVModel.Review" />
           <EntitySet Name="Role" EntityType="MArketPlaceAVModel.Role" />
           <EntitySet Name="StatysOrder" EntityType="MArketPlaceAVModel.StatysOrder" />
           <EntitySet Name="sysdiagrams" EntityType="MArketPlaceAVModel.sysdiagrams" />
@@ -397,7 +439,7 @@
             <End Role="Useer" EntitySet="Useer" />
             <End Role="Chek" EntitySet="Chek" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_DeliveryPoint" Association="MArketPlaceAVModel.FK_Order_DeliveryPoint">
+          <AssociationSet Name="FK_Order_DeliveryPoint1" Association="MArketPlaceAVModel.FK_Order_DeliveryPoint1">
             <End Role="DeliveryPoint" EntitySet="DeliveryPoint" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
@@ -433,9 +475,17 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductPhoto" EntitySet="ProductPhoto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Review_Product" Association="MArketPlaceAVModel.FK_Review_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductOrder_StatysOrder" Association="MArketPlaceAVModel.FK_ProductOrder_StatysOrder">
             <End Role="StatysOrder" EntitySet="StatysOrder" />
             <End Role="ProductOrder" EntitySet="ProductOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Useer" Association="MArketPlaceAVModel.FK_Review_Useer">
+            <End Role="Useer" EntitySet="Useer" />
+            <End Role="Review" EntitySet="Review" />
           </AssociationSet>
           <AssociationSet Name="FK_Useer_Role" Association="MArketPlaceAVModel.FK_Useer_Role">
             <End Role="Role" EntitySet="Role" />
@@ -455,7 +505,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Numger" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Numger" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CSV" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="DateTime" Precision="0" />
           <Property Name="BankId" Type="Int32" />
@@ -468,8 +518,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="MArketPlaceAVModel.FK_Order_DeliveryPoint" FromRole="DeliveryPoint" ToRole="Order" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="MArketPlaceAVModel.FK_Order_DeliveryPoint1" FromRole="DeliveryPoint" ToRole="Order" />
         </EntityType>
         <EntityType Name="DeliveryType">
           <Key>
@@ -490,11 +540,10 @@
           <Property Name="TypePaymentId" Type="Int32" />
           <Property Name="DeliveryTypeId" Type="Int32" />
           <Property Name="AdressDelivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryPoint" Type="Int32" />
           <Property Name="Check" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeliveryPointId" Type="Int32" />
           <Property Name="Sum" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="DeliveryPoint1" Relationship="MArketPlaceAVModel.FK_Order_DeliveryPoint" FromRole="Order" ToRole="DeliveryPoint" />
+          <NavigationProperty Name="DeliveryPoint" Relationship="MArketPlaceAVModel.FK_Order_DeliveryPoint1" FromRole="Order" ToRole="DeliveryPoint" />
           <NavigationProperty Name="DeliveryType" Relationship="MArketPlaceAVModel.FK_Order_DeliveryType" FromRole="Order" ToRole="DeliveryType" />
           <NavigationProperty Name="TypePayment" Relationship="MArketPlaceAVModel.FK_Order_TypePayment" FromRole="Order" ToRole="TypePayment" />
           <NavigationProperty Name="Useer" Relationship="MArketPlaceAVModel.FK_Order_Useer" FromRole="Order" ToRole="Useer" />
@@ -505,7 +554,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Descriprion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Phoro" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="TypeProductId" Type="Int32" />
@@ -516,6 +565,7 @@
           <NavigationProperty Name="TypeProduct" Relationship="MArketPlaceAVModel.FK_Product_TypeProduct" FromRole="Product" ToRole="TypeProduct" />
           <NavigationProperty Name="ProductOrder" Relationship="MArketPlaceAVModel.FK_ProductOrder_Product" FromRole="Product" ToRole="ProductOrder" />
           <NavigationProperty Name="ProductPhoto" Relationship="MArketPlaceAVModel.FK_ProductPhoto_Product" FromRole="Product" ToRole="ProductPhoto" />
+          <NavigationProperty Name="Review" Relationship="MArketPlaceAVModel.FK_Review_Product" FromRole="Product" ToRole="Review" />
         </EntityType>
         <EntityType Name="ProductOrder">
           <Key>
@@ -546,8 +596,19 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="MArketPlaceAVModel.FK_Product_Provider" FromRole="Provider" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="MArketPlaceAVModel.FK_Review_Product" FromRole="Review" ToRole="Product" />
+          <NavigationProperty Name="Useer" Relationship="MArketPlaceAVModel.FK_Review_Useer" FromRole="Review" ToRole="Useer" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -605,6 +666,7 @@
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Chek" Relationship="MArketPlaceAVModel.FK_Chek_Useer" FromRole="Useer" ToRole="Chek" />
           <NavigationProperty Name="Order" Relationship="MArketPlaceAVModel.FK_Order_Useer" FromRole="Useer" ToRole="Order" />
+          <NavigationProperty Name="Review" Relationship="MArketPlaceAVModel.FK_Review_Useer" FromRole="Useer" ToRole="Review" />
           <NavigationProperty Name="Role" Relationship="MArketPlaceAVModel.FK_Useer_Role" FromRole="Useer" ToRole="Role" />
         </EntityType>
         <Association Name="FK_ChekId_Bank">
@@ -631,7 +693,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_DeliveryPoint">
+        <Association Name="FK_Order_DeliveryPoint1">
           <End Type="MArketPlaceAVModel.DeliveryPoint" Role="DeliveryPoint" Multiplicity="0..1" />
           <End Type="MArketPlaceAVModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -739,6 +801,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Review_Product">
+          <End Type="MArketPlaceAVModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="MArketPlaceAVModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProductOrder_StatysOrder">
           <End Type="MArketPlaceAVModel.StatysOrder" Role="StatysOrder" Multiplicity="0..1" />
           <End Type="MArketPlaceAVModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
@@ -748,6 +822,18 @@
             </Principal>
             <Dependent Role="ProductOrder">
               <PropertyRef Name="StatysOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Useer">
+          <End Type="MArketPlaceAVModel.Useer" Role="Useer" Multiplicity="0..1" />
+          <End Type="MArketPlaceAVModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Useer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -811,7 +897,6 @@
                 <ScalarProperty Name="Sum" ColumnName="Sum" />
                 <ScalarProperty Name="DeliveryPointId" ColumnName="DeliveryPointId" />
                 <ScalarProperty Name="Check" ColumnName="Check" />
-                <ScalarProperty Name="DeliveryPoint" ColumnName="DeliveryPoint" />
                 <ScalarProperty Name="AdressDelivery" ColumnName="AdressDelivery" />
                 <ScalarProperty Name="DeliveryTypeId" ColumnName="DeliveryTypeId" />
                 <ScalarProperty Name="TypePaymentId" ColumnName="TypePaymentId" />
@@ -862,6 +947,16 @@
               <MappingFragment StoreEntitySet="Provider">
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Review">
+            <EntityTypeMapping TypeName="MArketPlaceAVModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

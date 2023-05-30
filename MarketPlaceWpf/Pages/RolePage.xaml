@@ -1,4 +1,4 @@
-﻿<Page x:Class="MarketPlaceWpf.Pages.TypePage"
+﻿<Page x:Class="MarketPlaceWpf.Pages.RolePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,8 @@
       xmlns:local="clr-namespace:MarketPlaceWpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TypePage"
+      Title="RolePage"
       Loaded="Page_Loaded">
-
     <Grid>
         <Grid.RowDefinitions>
 
@@ -20,11 +19,11 @@
         </Grid.ColumnDefinitions>
 
 
-        
+
         <DataGrid  AutoGenerateColumns="False"
                  ColumnWidth="*" 
                    IsReadOnly="True"
-                   x:Name="TypeProduct">
+                   x:Name="RoleDt">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"
                                     Width="20"
@@ -51,8 +50,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-   
-        <Button Grid.Row="1" Content="Add type delivery"
+
+        <Button Grid.Row="1" Content="Add Role"
              Width="100" 
                 x:Name="AddBtn"
                 Click="AddBtn_Click"/>

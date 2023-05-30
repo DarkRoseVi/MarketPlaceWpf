@@ -16,40 +16,38 @@ using System.Windows.Shapes;
 namespace MarketPlaceWpf.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddTypeProduct.xaml
+    /// Логика взаимодействия для AddRoleWindows.xaml
     /// </summary>
-    public partial class AddTypeProduct : Window
+    public partial class AddRoleWindows : Window
     {
-        public TypeProduct contextTypeProduct;
-        public AddTypeProduct(TypeProduct typeproduct)
+        public Role contextRole; 
+        public AddRoleWindows(Role role)
         {
             InitializeComponent();
-            contextTypeProduct = typeproduct;
-            DataContext = contextTypeProduct;
+            contextRole = role;
+            DataContext = contextRole;
 
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (TitleTb.Text.Trim().Length > 0 )
+            if (TitleTB.Text.Length > 0)
             {
-
-                if (contextTypeProduct.Id == 0)
+                if (contextRole.Id == 0)
                 {
-                    App.db.TypeProduct.Add(contextTypeProduct);
+                    App.db.Role.Add(contextRole);
+
                 }
-                MessageBox.Show("Type product saved");
+                MessageBox.Show("sead");
                 App.db.SaveChanges();
-                
             }
-            else MessageBox.Show("Fill in the title");
+            else MessageBox.Show("Title is null");
             DialogResult = true;
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
-
+            DialogResult = false;   
         }
     }
 }

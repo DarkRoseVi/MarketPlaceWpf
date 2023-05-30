@@ -60,8 +60,10 @@ namespace MarketPlaceWpf.Pages
             {
                 App.db.Chek.Add(contextchek);
             }
-            MessageBox.Show("yes");
-            App.db.SaveChanges();   
+            MessageBox.Show("Chek saved");
+            App.db.SaveChanges();
+                DialogResult = true;
+
             }
 
         
@@ -81,6 +83,11 @@ namespace MarketPlaceWpf.Pages
             {
                 e.Handled = true;
             }
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
         }
     }
 }

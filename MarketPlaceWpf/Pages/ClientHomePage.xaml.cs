@@ -1,5 +1,5 @@
 ﻿using MarketPlaceWpf.Models;
-using MarketPlaceWpf.Models.Partial;
+//using MarketPlaceWpf.Models.Partial;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -32,12 +32,8 @@ namespace MarketPlaceWpf.Pages
 
             InitializeComponent();
             contextuser = HelpClass.AutoUset;
-            //image = user.Photo;
-            // var dsd = App.db.Useer.Where(x=>x.Id == user.Id).FirstOrDefault();
-           // OrderLw.ItemsSource = App.db.ProductOrder.Where(x => x.StatysOrderId == 1).Select(x => x.Order).Where(s => s.UserId == contextuser.Id).ToList();
             OrderLw.ItemsSource = App.db.Order.Where(s => s.UserId == contextuser.Id).SelectMany(x => x.ProductOrder).Where(s=>s.StatysOrderId == 1).ToList();
 
-            //    ImageHome.Source = image ;
             DataContext = contextuser;
             Refresh();
           
@@ -69,7 +65,9 @@ namespace MarketPlaceWpf.Pages
         private void InfoOrrderBtn_Click(object sender, RoutedEventArgs e)
         {
             var prod = (sender as Button).DataContext as ProductOrder;
-            new InfoOrderHomePage(prod).ShowDialog();
+          var dialo =  new InfoOrderHomePage(prod).ShowDialog();
+            if (dialo.HasValue && dialo.Value)
+                Refresh();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

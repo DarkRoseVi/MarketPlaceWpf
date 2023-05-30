@@ -29,8 +29,10 @@ namespace MarketPlaceWpf.Pages
 
         private void AbbBtn_Click(object sender, RoutedEventArgs e)
         {
-            new AddProvider(new Provider()).Show();
-            Reshres();
+            var provider = new Provider();
+            var dialof = new AddProvider(provider).ShowDialog();
+            if (dialof.HasValue && dialof.Value)
+                Reshres();
         }
 
         public void Reshres() 
@@ -45,7 +47,8 @@ namespace MarketPlaceWpf.Pages
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             var pro = (sender as Button).DataContext as Provider;
-            new AddProvider(pro).Show();
+         var dialof = new AddProvider(pro).ShowDialog();
+            if(dialof.Value && dialof.HasValue)
             Reshres();
 
         }

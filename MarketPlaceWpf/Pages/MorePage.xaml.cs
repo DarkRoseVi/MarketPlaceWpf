@@ -28,8 +28,9 @@ namespace MarketPlaceWpf.Pages
             contextproduct = product;
             DataContext = contextproduct;
             ImageLW.ItemsSource = App.db.ProductPhoto.Where(x=>x.ProductId ==  contextproduct.Id).ToList();
-            ProviderTb.Text = contextproduct.Provider.Title;
-            TypeCb.Text = contextproduct.TypeProduct.Title;
+            //ProviderTb.Text = contextproduct.Provider.Title;
+            //TypeCb.Text = contextproduct.TypeProduct.Title;
+           
 
         }
 

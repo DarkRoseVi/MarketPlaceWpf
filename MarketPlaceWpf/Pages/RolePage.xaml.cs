@@ -1,6 +1,7 @@
 ﻿using MarketPlaceWpf.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,45 +18,44 @@ using System.Windows.Shapes;
 namespace MarketPlaceWpf.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для TypeProductPage.xaml
+    /// Логика взаимодействия для RolePage.xaml
     /// </summary>
-    public partial class TypeProductPage : Page
+    public partial class RolePage : Page
     {
-        public TypeProductPage()
+        public RolePage()
         {
             InitializeComponent();
+            
         }
 
         private void DeletBtn_Click(object sender, RoutedEventArgs e)
         {
-            var type = (sender as Button).DataContext as TypeProduct;
+            var em = (sender as Button).DataContext as Role;
             if (MessageBox.Show("Вы точно хотите удалить эту запись", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                App.db.TypeProduct.Remove(type);
-            }
+                App.db.Role.Remove(em);
             App.db.SaveChanges();
             Reshres();
+
         }
 
+        public void Reshres() 
+        {
+            RoleDt.ItemsSource = App.db.Role.ToList();
+        }
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            var type = (sender as Button).DataContext as TypeProduct;
-          var dialog =   new AddTypeProduct(type).ShowDialog();
-            if(dialog.HasValue && dialog.Value)
-               Reshres();
-
+            var rol = (sender as Button).DataContext as Role;
+            var dialog = new AddRoleWindows(rol).ShowDialog();
+            if (dialog.HasValue && dialog.Value)
+                Reshres();
         }
 
-        private void AbbBtn_Click(object sender, RoutedEventArgs e)
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-          var dialog=   new AddTypeProduct(new TypeProduct()).ShowDialog();
-            if (dialog.HasValue && dialog.Value) 
-            Reshres();
-        }
 
-        public void Reshres()
-        {
-            TypeProdDt.ItemsSource = App.db.TypeProduct.ToList();
+            var dialog = new AddRoleWindows(new Role()).ShowDialog();
+            if (dialog.HasValue && dialog.Value)
+                Reshres();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

@@ -79,7 +79,7 @@ namespace MarketPlaceWpf.Pages
                     TypePayment = TypePaymentCb.SelectedItem as TypePayment,
                     DeliveryType = TypedeliveryCb.SelectedItem as DeliveryType,
                     AdressDelivery = AdressDeliveryTb.Text.Trim(),
-                    DeliveryPoint1 = DeliveryPointCb.SelectedItem as DeliveryPoint,
+                    DeliveryPoint = DeliveryPointCb.SelectedItem as DeliveryPoint,
                     Check = CheckTb.Text.Trim(),
                  } ;
 

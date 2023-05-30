@@ -31,9 +31,11 @@ namespace MarketPlaceWpf.Pages
         private void ExtraditeBtn_Click(object sender, RoutedEventArgs e)
         {
             var barcoderTb = BarCodeTb.Text.Trim();
-            var barcode = App.db.ProductOrder.Where(x => x.BarCode == barcoderTb && x.StatysOrderId == 1).FirstOrDefault();
-            barcode.StatysOrderId = 2;
+            var barcode = App.db.ProductOrder.Where(x => x.BarCode == barcoderTb && x.StatysOrderId == 5 ).FirstOrDefault();
+            barcode.StatysOrderId = 8;
             App.db.SaveChanges();
+            MessageBox.Show($"order {barcode.StatysOrder.Title}");
+            Close();
         }
 
         private void BarCodeTb_PreviewTextInput(object sender, TextCompositionEventArgs e)

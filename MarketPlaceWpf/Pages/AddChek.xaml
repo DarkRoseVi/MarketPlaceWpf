@@ -33,6 +33,8 @@
         
             <Button Content="Save" x:Name="SaveBtn"
                     Click="SaveBtn_Click"  Margin="5"/>
+            <Button Content="Exit" x:Name="ExitBtn"
+                    Click="ExitBtn_Click" Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>
