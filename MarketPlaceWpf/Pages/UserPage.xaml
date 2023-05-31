@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:MarketPlaceWpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UserPage">
+      Title="UserPage"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -28,8 +29,18 @@
                 <DataGridTextColumn Header="Id"
                                     Width="20"
                                      Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Title"
-                                    Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Last Name"
+                                    Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="SurName"
+                                    Binding="{Binding SurName}"/>
+                <DataGridTextColumn Header="Role"
+                                    Binding="{Binding Role.Title}"/>
+                <DataGridTextColumn Header="Login"
+                                    Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Password"
+                                    Binding="{Binding Password}"/>
                 <DataGridTemplateColumn Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -51,7 +62,7 @@
         </DataGrid>
 
 
-        <Button Grid.Row="1" Content="Add type delivery"
+        <Button Grid.Row="1" Content="Add user"
              Width="100" 
                 x:Name="AddBtn"
                Click="AddBtn_Click"/>

@@ -104,6 +104,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AutoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -277,6 +281,9 @@
     </Compile>
     <Compile Include="Pages\AddTypeProduct.xaml.cs">
       <DependentUpon>AddTypeProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AutoPage.xaml.cs">
       <DependentUpon>AutoPage.xaml</DependentUpon>

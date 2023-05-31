@@ -66,7 +66,7 @@ namespace MarketPlaceWpf.Pages
         {
             var chek = CheckCb.SelectedItem as Chek;
             var csv = chek.CSV.ToString();
-         
+            decimal summa;
             if (csv == CSV.Text.Trim())
             {
 
@@ -81,13 +81,16 @@ namespace MarketPlaceWpf.Pages
                     AdressDelivery = AdressDeliveryTb.Text.Trim(),
                     DeliveryPoint = DeliveryPointCb.SelectedItem as DeliveryPoint,
                     Check = CheckTb.Text.Trim(),
-                 } ;
+                };
 
-                var random = new Random();  
+                var random = new Random();
                 string randinstring = new string(Enumerable.Repeat("123456789", 13).Select(s => s[random.Next(s.Length)]).ToArray());
                 App.db.Order.Add(orderuser);
 
-                foreach (Product product in HelpClass.prod) 
+                orderuser.Sum = HelpClass.prod.Sum(x => x.Count * x.Cost);
+
+
+                foreach (Product product in HelpClass.prod)
                 {
                     App.db.ProductOrder.Add(new ProductOrder
                     {
@@ -95,17 +98,17 @@ namespace MarketPlaceWpf.Pages
                         BarCode = Convert.ToString(randinstring),
                         Product = product,
                         StatysOrderId = 1,
-                        Quantity = product.count,
+                        Quantity = product.Count,
 
-                    }) ;
-                    var sums = product.count * product.Cost;
-                    orderuser.Sum = sums;   
-                   
+                    });
+                    //var sums = product.count * product.Cost;
+                    //  summa = (decimal)sums;
                 }
+                //  orderuser.Sum  =
+
 
                 MessageBox.Show("yes");
-                App.db.SaveChanges();   
-
+                App.db.SaveChanges();
             }
             else MessageBox.Show("csv не совпадают, проверьте");
         }

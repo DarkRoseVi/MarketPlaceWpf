@@ -26,9 +26,12 @@ namespace MarketPlaceWpf.Models
                 return null;
             }
         }
-        public int count 
+        private int _count = 1;
+
+        public int Count
         {
-            get;set;
+            get { return _count; }
+            set { _count = value; }
         }
     }
 }

@@ -35,7 +35,7 @@
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="Count" Margin="5"/>
                                 <TextBox Width="50" x:Name="CountTb"
-                                         Text="{Binding count}" PreviewTextInput="CountTb_PreviewTextInput"
+                                        Text="{Binding Count}" PreviewTextInput="CountTb_PreviewTextInput"
                                          />
                             </StackPanel>
                         

@@ -1,6 +1,7 @@
 ﻿using MarketPlaceWpf.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,11 +44,23 @@ namespace MarketPlaceWpf.Pages
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
+          var dialog =   new AddUserWindow(new Useer()).ShowDialog();
+            if(dialog.HasValue && dialog.Value)
+            Reshre();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
+            var users = (sender as Button).DataContext as Useer;
+            var dialog = new AddUserWindow(users).ShowDialog();
+            if (dialog.HasValue && dialog.Value)
+                Reshre();
+            Reshre();
+        }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Reshre();
         }
     }
 }
